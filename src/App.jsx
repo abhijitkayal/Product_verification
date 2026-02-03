@@ -27,7 +27,9 @@ const App = () => {
   const [status, setStatus] = useState('idle'); // idle, loading, success, fail, duplicate
   const [prevDetails, setPrevDetails] = useState(null);
   const [productName, setProductName] = useState('');
-  const isSerialAllowed = mfgDate === "02/2022 or before";
+  // const isSerialAllowed = mfgDate === "02/2022 or before";
+  const isSerialAllowed = mfgDate !== "03/2022 or after";
+
 
 
   // Dropdown States
@@ -144,29 +146,28 @@ useEffect(() => {
               </div>
 
               {/* 2. SERIAL NUMBER */}
-              <input
-  type="text"
-  placeholder={
-    isSerialAllowed
-      ? "Enter serial number"
-      : "Serial not required for this MFG date"
-  }
-  required={isSerialAllowed}
-  disabled={!isSerialAllowed || status === 'loading'}
-  className={`
-    w-full px-5 py-1 rounded-2xl border-2
-    font-bold text-lg transition-all
-    outline-none
+             {isSerialAllowed && (
+  <div>
+    <label className="block text-[10px] font-black uppercase text-slate-900 mb-1 ml-1 tracking-widest">
+      Serial Number
+    </label>
+    <input
+      type="text"
+      placeholder="Enter serial number"
+      required
+      className="
+        w-full px-5 py-1 rounded-2xl border-2
+        border-slate-100 bg-slate-300
+        focus:border-indigo-600 focus:bg-white
+        focus:ring-4 focus:ring-indigo-50
+        outline-none font-bold text-lg transition-all
+      "
+      value={serial}
+      onChange={(e) => setSerial(e.target.value)}
+    />
+  </div>
+)}
 
-    ${
-      isSerialAllowed
-        ? 'border-slate-100 bg-slate-300 focus:border-indigo-600 focus:bg-white focus:ring-4 focus:ring-indigo-50 text-slate-900'
-        : 'border-slate-200 bg-slate-200 text-slate-400 cursor-not-allowed'
-    }
-  `}
-  value={serial}
-  onChange={(e) => setSerial(e.target.value)}
-/>
 
 
               {/* 3. AUTHENTICATION CODE */}
@@ -192,9 +193,32 @@ useEffect(() => {
               <p className='text-sm text-justify'>We strongly discourage anyone from purchasing our products are loose ampoules/trays or blisters/strips without cartons.All genuine alpha products are always aupplied in a tamper proof carton with intact silver scratch field except for Oral Strips which has no authentication features.</p>
               <div className='flex gap-3'>
                 <strong>Download App:</strong>
-                <img src={Android} width={30} height={30} onClick={() => window.open('https://play.google.com/store/apps/details?id=prjct.liji.codeauth.app')}/>
-                <img src={Apple} width={30} height={30} onClick={() => window.open('https://apps.apple.com/us/app/check-alpha/id1140042313')}/>
-                <img src={Blackberry} width={30} height={30} onClick={() => window.open('https://play.google.com/store/apps/details?id=prjct.liji.codeauth.app')}/>
+                <div className="flex gap-4">
+  <a
+    href="https://play.google.com/store/apps/details?id=prjct.liji.codeauth.app"
+    target="_blank"
+    rel="noopener noreferrer"
+  >
+    <img src={Android} width={30} height={30} alt="Android App" />
+  </a>
+
+  <a
+    href="https://apps.apple.com/us/app/check-alpha/id1140042313"
+    target="_blank"
+    rel="noopener noreferrer"
+  >
+    <img src={Apple} width={30} height={30} alt="Apple App" />
+  </a>
+
+  <a
+    href="https://play.google.com/store/apps/details?id=prjct.liji.codeauth.app"
+    target="_blank"
+    rel="noopener noreferrer"
+  >
+    <img src={Blackberry} width={30} height={30} alt="BlackBerry App" />
+  </a>
+</div>
+
               </div>
               
             </form>
