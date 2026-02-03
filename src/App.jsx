@@ -1,5 +1,8 @@
 import React, { useState, useEffect, useRef } from 'react';
-
+import Android from './assets/download.png';
+import Apple from './assets/download (1).png'
+import Logo from './assets/Alpha - Pharma Logo.png'
+import Blackberry from './assets/download (2).png'
 // --- PLACE TO IMPLEMENT CODES ---
 const PRODUCT_DATABASE = [
   {
@@ -24,6 +27,8 @@ const App = () => {
   const [status, setStatus] = useState('idle'); // idle, loading, success, fail, duplicate
   const [prevDetails, setPrevDetails] = useState(null);
   const [productName, setProductName] = useState('');
+  const isSerialAllowed = mfgDate === "02/2022 or before";
+
 
   // Dropdown States
   const [isOpen, setIsOpen] = useState(false);
@@ -47,11 +52,20 @@ const App = () => {
       const cleanCode = code.trim().toUpperCase();
       const cleanSerial = serial.trim().toUpperCase();
 
-      const product = PRODUCT_DATABASE.find(p =>
-        p.code.toUpperCase() === cleanCode &&
-        p.serial.toUpperCase() === cleanSerial &&
-        p.mfg === mfgDate
-      );
+      // const product = PRODUCT_DATABASE.find(p =>
+      //   p.code.toUpperCase() === cleanCode &&
+        // (isSerialAllowed ? p.serial.toUpperCase() === cleanSerial : true) &&
+       const product = PRODUCT_DATABASE.find(p =>
+  p.code.toUpperCase() === cleanCode &&
+  p.mfg === mfgDate &&
+  (
+    isSerialAllowed
+      ? p.serial.toUpperCase() === cleanSerial
+      : true
+  )
+);
+
+      // );
 
       if (!product) {
         setStatus('fail');
@@ -77,6 +91,11 @@ const App = () => {
       }
     }, 1000);
   };
+useEffect(() => {
+  if (!isSerialAllowed) {
+    setSerial('');
+  }
+}, [isSerialAllowed]);
 
   const reset = () => {
     setStatus('idle');
@@ -86,25 +105,26 @@ const App = () => {
   };
 
   return (
-    <div className="min-h-screen w-full bg-cyan-700 flex items-center justify-center p-4 font-sans text-slate-900">
+    <div className="min-h-screen w-full bg-cyan-700 flex items-center justify-center px-4 py-2 font-sans text-slate-900">
       <div className="w-full max-w-md bg-white rounded-[2.5rem] shadow-2xl overflow-hidden border border-slate-800 transition-all duration-500">
 
         {/* Modern Brand Header */}
-        <div className="bg-[#111827] p-10 text-center border-b border-slate-800">
-          <h1 className="text-4xl font-black text-white tracking-tighter uppercase italic">Verify Product</h1>
-          <p className="text-indigo-500 text-[10px] font-black uppercase tracking-[0.3em] mt-2">Product Authenticity Check</p>
+        <div className="flex justify-center border-b border-slate-800">
+          {/* <h1 className="text-4xl font-black text-white tracking-tighter uppercase italic">Verify Product</h1> */}
+          <img src={Logo} height={150} width={150}/>
+          {/* <p className="text-indigo-500 text-[10px] font-black uppercase tracking-[0.3em] mt-2">Product Authenticity Check</p> */}
         </div>
 
-        <div className="p-8">
+        <div className="py-4 px-8">
           {status === 'idle' || status === 'loading' ? (
-            <form onSubmit={handleVerify} className="space-y-5">
+            <form onSubmit={handleVerify} className="space-y-1">
 
               {/* 1. MFG DATE DROPDOWN */}
               <div className="relative" ref={dropdownRef}>
                 <label className="block text-[10px] font-black uppercase text-slate-900 mb-2 ml-1 tracking-widest">Mfg. Date</label>
                 <div
                   onClick={() => setIsOpen(!isOpen)}
-                  className={`w-full px-5 py-4 rounded-2xl border-2 cursor-pointer flex justify-between items-center transition-all duration-300 ${isOpen ? 'border-indigo-600 bg-slate-100 ring-4 ring-indigo-50' : 'border-slate-100 bg-slate-300'}`}
+                  className={`w-full px-5 py-1 rounded-2xl border-2 cursor-pointer flex justify-between items-center transition-all duration-300 ${isOpen ? 'border-indigo-600 bg-slate-100 ring-4 ring-indigo-50' : 'border-slate-100 bg-slate-300'}`}
                 >
                   <span className={`font-bold ${mfgDate ? 'text-slate-900' : 'text-slate-700'}`}>
                     {mfgDate || "Select Period"}
@@ -124,33 +144,63 @@ const App = () => {
               </div>
 
               {/* 2. SERIAL NUMBER */}
-              <div>
-                <label className="block text-[10px] font-black uppercase text-slate-900 mb-2 ml-1 tracking-widest">Serial Number</label>
-                <input
-                  type="text" required placeholder="Enter serial number" disabled={status === 'loading'}
-                  className="w-full px-5 py-4 rounded-2xl border-2 border-slate-100 focus:border-indigo-600 focus:bg-white focus:ring-4 focus:ring-indigo-50 outline-none bg-slate-300 font-bold text-lg transition-all"
-                  value={serial} onChange={(e) => setSerial(e.target.value)}
-                />
-              </div>
+              <input
+  type="text"
+  placeholder={
+    isSerialAllowed
+      ? "Enter serial number"
+      : "Serial not required for this MFG date"
+  }
+  required={isSerialAllowed}
+  disabled={!isSerialAllowed || status === 'loading'}
+  className={`
+    w-full px-5 py-1 rounded-2xl border-2
+    font-bold text-lg transition-all
+    outline-none
+
+    ${
+      isSerialAllowed
+        ? 'border-slate-100 bg-slate-300 focus:border-indigo-600 focus:bg-white focus:ring-4 focus:ring-indigo-50 text-slate-900'
+        : 'border-slate-200 bg-slate-200 text-slate-400 cursor-not-allowed'
+    }
+  `}
+  value={serial}
+  onChange={(e) => setSerial(e.target.value)}
+/>
+
 
               {/* 3. AUTHENTICATION CODE */}
               <div>
-                <label className="block text-[10px] font-black uppercase text-slate-900 mb-2 ml-1 tracking-widest">Authentication Code</label>
+                <label className="block text-[10px] font-black uppercase text-slate-900 mb-1 ml-1 tracking-widest">Authentication Code</label>
                 <input
                   type="text" required placeholder="Enter security code" disabled={status === 'loading'}
-                  className="w-full px-5 py-4 rounded-2xl border-2 border-slate-100 focus:border-indigo-600 focus:bg-white focus:ring-4 focus:ring-indigo-50 outline-none bg-slate-300 font-bold text-lg transition-all"
+                  className="w-full px-5 py-1 rounded-2xl border-2 border-slate-100 focus:border-indigo-600 focus:bg-white focus:ring-4 focus:ring-indigo-50 outline-none bg-slate-300 font-bold text-lg transition-all"
                   value={code} onChange={(e) => setCode(e.target.value)}
                 />
               </div>
 
               <button
                 type="submit" disabled={status === 'loading'}
-                className="w-full bg-[#111827] hover:bg-indigo-600 text-white font-black py-5 rounded-2xl transition-all active:scale-[0.98] shadow-xl text-lg mt-4 uppercase tracking-tight flex items-center justify-center gap-3"
+                className="w-full -mt-5 bg-[#111827] hover:bg-indigo-600 text-white font-black py-1 rounded-2xl transition-all active:scale-[0.98] shadow-xl text-lg mt-4 uppercase tracking-tight flex items-center justify-center gap-3"
               >
                 {status === 'loading' ? <div className="w-5 h-5 border-4 border-white/30 border-t-white rounded-full animate-spin"></div> : 'Submit'}
               </button>
+
+              <strong>Note:</strong>
+              <p className='text-sm'>Each product can only be authenticated once.All fields are case sensitive.</p>
+              <strong>Warning:</strong>
+              <p className='text-sm text-justify'>We strongly discourage anyone from purchasing our products are loose ampoules/trays or blisters/strips without cartons.All genuine alpha products are always aupplied in a tamper proof carton with intact silver scratch field except for Oral Strips which has no authentication features.</p>
+              <div className='flex gap-3'>
+                <strong>Download App:</strong>
+                <img src={Android} width={30} height={30}/>
+                <img src={Apple} width={30} height={30}/>
+                <img src={Blackberry} width={30} height={30}/>
+              </div>
+              
             </form>
           ) : null}
+
+
 
           {/* SUCCESS SCREEN */}
           {status === 'success' && (
