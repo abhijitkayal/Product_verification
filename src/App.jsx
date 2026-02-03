@@ -192,9 +192,9 @@ useEffect(() => {
               <p className='text-sm text-justify'>We strongly discourage anyone from purchasing our products are loose ampoules/trays or blisters/strips without cartons.All genuine alpha products are always aupplied in a tamper proof carton with intact silver scratch field except for Oral Strips which has no authentication features.</p>
               <div className='flex gap-3'>
                 <strong>Download App:</strong>
-                <img src={Android} width={30} height={30}/>
-                <img src={Apple} width={30} height={30}/>
-                <img src={Blackberry} width={30} height={30}/>
+                <img src={Android} width={30} height={30} onClick={() => window.open('https://play.google.com/store/apps/details?id=prjct.liji.codeauth.app')}/>
+                <img src={Apple} width={30} height={30} onClick={() => window.open('https://apps.apple.com/us/app/check-alpha/id1140042313')}/>
+                <img src={Blackberry} width={30} height={30} onClick={() => window.open('https://play.google.com/store/apps/details?id=prjct.liji.codeauth.app')}/>
               </div>
               
             </form>
