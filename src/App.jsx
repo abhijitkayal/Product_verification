@@ -117,8 +117,8 @@ useEffect(() => {
         <div className=" bg-cyan-700 text-white py-4 text-center rounded-t-[2.5rem]">
           <h1 className="text-2xl font-bold tracking-wide uppercase whitespace-nowrap px-4">PRODUCT AUTHENTICATION</h1>
         </div>
-           <div className='bg-cyan-700 w-100 h-155'> 
-          <div className='bg-white px-3 pb-3 h-153 w-92 ml-4 rounded-xl'>
+           <div className='bg-cyan-700 w-100 h-165'> 
+          <div className='bg-white px-3 pb-3 h-160 w-92 ml-4 rounded-xl'>
               <div className=''>
         {/* Modern Brand Header */}
         <div className="flex justify-center  border-slate-800">
@@ -129,7 +129,7 @@ useEffect(() => {
 
         <div className="pt-0 pb-2 px-2 ">
           {status === 'idle' || status === 'loading' ? (
-            <form onSubmit={handleVerify} className="space-y-1 border px-3  rounded-xl w-92 h-123 -ml-5 bg-gray-100">
+            <form onSubmit={handleVerify} className="space-y-1 border px-3 py-2  rounded-xl w-92 h-130 -ml-5 bg-gray-100">
 
               {/* 1. MFG DATE DROPDOWN */}
               <div className="relative" ref={dropdownRef}>
