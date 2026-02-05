@@ -107,26 +107,36 @@ useEffect(() => {
   };
 
   return (
-    <div className="min-h-screen w-full bg-cyan-700 flex items-center justify-center px-4 py-2 font-sans text-slate-900">
-      <div className="w-full max-w-md bg-white rounded-[2.5rem] shadow-2xl overflow-hidden border border-slate-800 transition-all duration-500">
+    <div className="min-h-screen w-full  font-sans text-slate-900">
+      
+      <div className="flex items-center justify-center px-4 py-6">
+        <div className='rounded-xl p-0'>
+          <div className="w-full max-w-lg bg-white rounded-xl shadow-2xl overflow-hidden  transition-all duration-500">
 
+        {/* Product Verification Header */}
+        <div className=" bg-cyan-700 text-white py-4 text-center rounded-t-[2.5rem]">
+          <h1 className="text-2xl font-bold tracking-wide uppercase whitespace-nowrap px-4">PRODUCT AUTHENTICATION</h1>
+        </div>
+           <div className='bg-cyan-700 w-100 h-155'> 
+          <div className='bg-white px-3 pb-3 h-153 w-92 ml-4 rounded-xl'>
+              <div className=''>
         {/* Modern Brand Header */}
-        <div className="flex justify-center border-b border-slate-800">
+        <div className="flex justify-center  border-slate-800">
           {/* <h1 className="text-4xl font-black text-white tracking-tighter uppercase italic">Verify Product</h1> */}
-          <img src={Logo} height={150} width={150}/>
+          <img src={Logo} height={170} width={170} className='font-bold'/>
           {/* <p className="text-indigo-500 text-[10px] font-black uppercase tracking-[0.3em] mt-2">Product Authenticity Check</p> */}
         </div>
 
-        <div className="py-4 px-8">
+        <div className="pt-0 pb-2 px-2 ">
           {status === 'idle' || status === 'loading' ? (
-            <form onSubmit={handleVerify} className="space-y-1">
+            <form onSubmit={handleVerify} className="space-y-1 border px-3  rounded-xl w-92 h-123 -ml-5 bg-gray-100">
 
               {/* 1. MFG DATE DROPDOWN */}
               <div className="relative" ref={dropdownRef}>
-                <label className="block text-[10px] font-black uppercase text-slate-900 mb-2 ml-1 tracking-widest">Mfg. Date</label>
+                <label className="block text-[10px] font-black uppercase text-slate-900 mb-2 ml-8 tracking-widest">Mfg. Date</label>
                 <div
                   onClick={() => setIsOpen(!isOpen)}
-                  className={`w-full px-5 py-1 rounded-2xl border-2 cursor-pointer flex justify-between items-center transition-all duration-300 ${isOpen ? 'border-indigo-600 bg-slate-100 ring-4 ring-indigo-50' : 'border-slate-100 bg-slate-300'}`}
+                  className={`w-60 px-5 ml-8 py-1 rounded border-2 border-black cursor-pointer flex justify-between items-center transition-all duration-300 ${isOpen ? 'border-indigo-600 bg-white ring-4 ring-indigo-50' : 'border-black bg-white'}`}
                 >
                   <span className={`font-bold ${mfgDate ? 'text-slate-900' : 'text-slate-700'}`}>
                     {mfgDate || "Select Period"}
@@ -136,7 +146,7 @@ useEffect(() => {
                   </svg>
                 </div>
                 {/* Slide down animation */}
-                <div className={`absolute z-20 w-full mt-2 bg-white border-2 border-indigo-600 rounded-2xl shadow-2xl overflow-hidden transition-all duration-300 origin-top ${isOpen ? 'opacity-100 scale-y-100' : 'opacity-0 scale-y-0 pointer-events-none'}`}>
+                <div className={`absolute z-20 w-60 ml-8 mt-2 bg-white border-2 border-indigo-600 rounded-2xl shadow-2xl overflow-hidden transition-all duration-300 origin-top ${isOpen ? 'opacity-100 scale-y-100' : 'opacity-0 scale-y-0 pointer-events-none'}`}>
                   {options.map((opt) => (
                     <div key={opt} onClick={() => { setMfgDate(opt); setIsOpen(false); }} className="px-5 py-4 font-bold text-slate-700 bg-slate-300 hover:bg-indigo-600 hover:text-white cursor-pointer transition-colors border-b last:border-0 border-slate-50">
                       {opt}
@@ -148,16 +158,16 @@ useEffect(() => {
               {/* 2. SERIAL NUMBER */}
              {isSerialAllowed && (
   <div>
-    <label className="block text-[10px] font-black uppercase text-slate-900 mb-1 ml-1 tracking-widest">
+    <label className="block text-[10px] font-black uppercase text-slate-900 mb-1 ml-8 tracking-widest">
       Serial Number
     </label>
     <input
       type="text"
-      placeholder="Enter serial number"
+      placeholder=""
       required
       className="
-        w-full px-5 py-1 rounded-2xl border-2
-        border-slate-100 bg-slate-300
+        w-60 ml-8 px-5 py-1 rounded border-2
+        border-black bg-white
         focus:border-indigo-600 focus:bg-white
         focus:ring-4 focus:ring-indigo-50
         outline-none font-bold text-lg transition-all
@@ -172,17 +182,17 @@ useEffect(() => {
 
               {/* 3. AUTHENTICATION CODE */}
               <div>
-                <label className="block text-[10px] font-black uppercase text-slate-900 mb-1 ml-1 tracking-widest">Authentication Code</label>
+                <label className="block text-[10px] ml-8  font-black uppercase text-slate-900 mb-1 tracking-widest">Authentication Code</label>
                 <input
-                  type="text" required placeholder="Enter security code" disabled={status === 'loading'}
-                  className="w-full px-5 py-1 rounded-2xl border-2 border-slate-100 focus:border-indigo-600 focus:bg-white focus:ring-4 focus:ring-indigo-50 outline-none bg-slate-300 font-bold text-lg transition-all"
+                  type="text" required placeholder="" disabled={status === 'loading'}
+                  className="w-60 ml-8 px-5 py-1 rounded border-2 border-black  outline-none bg-white font-bold text-lg transition-all"
                   value={code} onChange={(e) => setCode(e.target.value)}
                 />
               </div>
 
               <button
                 type="submit" disabled={status === 'loading'}
-                className="w-full -mt-5 bg-[#111827] hover:bg-indigo-600 text-white font-black py-1 rounded-2xl transition-all active:scale-[0.98] shadow-xl text-lg mt-4 uppercase tracking-tight flex items-center justify-center gap-3"
+                className="w-40  ml-18 -mt-5 bg-[#111827] hover:bg-indigo-600 text-white font-black py-1 rounded-2xl transition-all active:scale-[0.98] shadow-xl text-lg mt-4 uppercase tracking-tight flex items-center justify-center gap-3"
               >
                 {status === 'loading' ? <div className="w-5 h-5 border-4 border-white/30 border-t-white rounded-full animate-spin"></div> : 'Submit'}
               </button>
@@ -264,6 +274,11 @@ useEffect(() => {
             </div>
           )}
         </div>
+      </div>
+          </div>
+        </div>
+        </div>
+      </div>
       </div>
     </div>
   );
