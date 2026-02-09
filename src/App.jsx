@@ -1044,7 +1044,7 @@ export default function App() {
             </div>
 
             {/* ================= OPTIONAL QR LIST FOR TEST ================= */}
-            {/* <div className="px-6 pb-6">
+            <div className="px-6 pb-6">
               <details className="bg-gray-50 border rounded-xl p-4">
                 <summary className="cursor-pointer font-bold text-sm">
                   Show QR Codes For All Products (Testing)
@@ -1071,7 +1071,7 @@ export default function App() {
                   ))}
                 </div>
               </details>
-            </div> */}
+            </div>
           </div>
         </div>
       </div>
