@@ -444,7 +444,7 @@ import Logo from "./assets/Alpha - Pharma Logo.png";
 import Blackberry from "./assets/download (2).png";
 
 /* ===================== DATABASE ===================== */
-const WEBSITE_URL = "product-verification-rust.vercel.app"; // when deployed use: https://yourdomain.com
+const WEBSITE_URL = "https://product-verification-dqhw.vercel.app"; // when deployed use: https://yourdomain.com
 
 const RAW_PRODUCTS = [
   {
