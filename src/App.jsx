@@ -5,6 +5,7 @@ import Logo from './assets/Alpha - Pharma Logo.png'
 import Blackberry from './assets/download (2).png'
 // --- PLACE TO IMPLEMENT CODES ---
 const PRODUCT_DATABASE = [
+
   {
     serial: "SN1001",
     code: "ALPHA123",
@@ -13,17 +14,122 @@ const PRODUCT_DATABASE = [
   },
   {
     serial: "SN1002",
+    code: "BRAVO457",
+    mfg: "02/2022 or before",
+    name: "Cardioplus 10mg - 30 tablets"
+  },
+  {
+    serial: "SN1003",
+    code: "CHARLIE892",
+    mfg: "02/2022 or before",
+    name: "Neurovita B12 - 60 capsules"
+  },
+  {
+    serial: "SN1004",
+    code: "DELTA310",
+    mfg: "02/2022 or before",
+    name: "GastroCare 20mg - 15 tablets"
+  },
+  {
+    serial: "SN1005",
+    code: "ECHO765",
+    mfg: "02/2022 or before",
+    name: "ImmunoShield C - 100 tablets"
+  },
+  {
+    serial: "SN1006",
+    code: "FOXTROT221",
+    mfg: "02/2022 or before",
+    name: "PainRelief XR 500mg - 10 tablets"
+  },
+  {
+    serial: "SN1007",
+    code: "GOLF908",
+    mfg: "02/2022 or before",
+    name: "RespiraClear 5mg - 20 tablets"
+  },
+  {
+    serial: "SN1008",
+    code: "HOTEL634",
+    mfg: "02/2022 or before",
+    name: "Dermacalm Lotion - 100ml"
+  },
+  {
+    serial: "SN1009",
+    code: "INDIA519",
+    mfg: "02/2022 or before",
+    name: "OcuVision Plus - 30 softgels"
+  },
+  {
+    serial: "SN1010",
+    code: "JULIET842",
+    mfg: "02/2022 or before",
+    name: "VitaBoost Zinc - 90 tablets"
+  },
+
+  {
+    serial: "SN1011",
     code: "BETA456",
     mfg: "03/2022 or after",
     name: "Alphabol 10mg - 50 tablets"
   },
+ 
+  {
+    serial: "SN1012",
+    code: "LIMA204",
+    mfg: "03/2022 or after",
+    name: "GlucoGuard 500mg - 30 tablets"
+  },
+  {
+    serial: "SN1013",
+    code: "MIKE639",
+    mfg: "03/2022 or after",
+    name: "NeuroCalm 25mg - 15 tablets"
+  },
+  {
+    serial: "SN1014",
+    code: "NOVEMBER115",
+    mfg: "03/2022 or after",
+    name: "HeartSafe 75mg - 14 tablets"
+  },
+  {
+    serial: "SN1015",
+    code: "OSCAR903",
+    mfg: "03/2022 or after",
+    name: "AllerFree 5mg - 10 tablets"
+  },
+  {
+    serial: "SN1016",
+    code: "PAPA472",
+    mfg: "03/2022 or after",
+    name: "VitaD3 Max - 8 capsules"
+  },
+  {
+    serial: "SN1017",
+    code: "QUEBEC388",
+    mfg: "03/2022 or after",
+    name: "LiverCare Forte - 60 tablets"
+  },
+  {
+    serial: "SN1018",
+    code: "ROMEO726",
+    mfg: "03/2022 or after",
+    name: "RespiraAid Syrup - 100ml"
+  },
+  {
+    serial: "SN1019",
+    code: "SIERRA550",
+    mfg: "03/2022 or after",
+    name: "PainBlock Gel - 30g"
+  }
+
 ];
 // --------------------------------
 
 const App = () => {
   const [serial, setSerial] = useState('');
   const [code, setCode] = useState('');
-  const [mfgDate, setMfgDate] = useState('');
+  const [mfgDate, setMfgDate] = useState('02/2022 or before');
   const [status, setStatus] = useState('idle'); // idle, loading, success, fail, duplicate
   const [prevDetails, setPrevDetails] = useState(null);
   const [productName, setProductName] = useState('');
