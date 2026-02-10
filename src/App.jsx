@@ -440,7 +440,7 @@ import { QRCodeCanvas } from "qrcode.react";
 
 import Android from "./assets/download.png";
 import Apple from "./assets/download (1).png";
-import Logo from "./assets/Alpha - Pharma Logo.png";
+import Logo from "./assets/Alpha - Pharma Logo (1).png";
 import Blackberry from "./assets/download (2).png";
 
 /* ===================== DATABASE ===================== */
@@ -765,44 +765,44 @@ export default function App() {
 
   /* ===================== UI ===================== */
   return (
-    <div className="min-h-screen w-full bg-gray-50 font-sans flex items-center justify-center p-4">
+    <div className="min-h-screen w-full bg-gray-50 font-sans flex items-center justify-center p-2 sm:p-4">
       <div className="w-full max-w-md">
-        <div className="bg-gradient-to-br from-[#0087CC] to-[#0066AA] rounded-t-[2rem] rounded-b-[1rem] px-4 pb-2 shadow-2xl">
+        <div className="bg-gradient-to-br from-[#0087CC] to-[#0066AA] rounded-t-[1.5rem] sm:rounded-t-[2rem] rounded-b-[1rem] px-2 sm:px-4 pb-2 shadow-2xl">
           {/* Header */}
-          <div className="bg-gradient-to-r from-[#0066AA] to-[#0066AA] text-white py-3 text-center -ml-4 w-112 -mt-4 rounded-t-[2rem]">
-            <h1 className="text-[19px] font-bold tracking-wider uppercase">
+          <div className="bg-0066AA sm:bg-gradient-to-r md:w-md sm:from-[#0066AA] sm:to-[#0066AA] text-white py-2 sm:py-3 text-center -ml-2 sm:-ml-4 w-full -mt-2 sm:-mt-4 rounded-t-[1.5rem] sm:rounded-t-[2rem]">
+            <h1 className="text-[15px] sm:text-[17px] md:text-[19px] font-bold tracking-wider uppercase px-2">
               PRODUCT AUTHENTICATION
             </h1>
           </div>
 
           <div className="bg-white rounded-xl overflow-hidden">
             {/* Logo */}
-            <div className="flex flex-col items-center rounded-2xl pt-4 pb-2 px-4">
+            <div className="flex flex-col items-center rounded-2xl pt-2 sm:pt-4 pb-2 px-2 sm:px-4">
               <img
                 src={Logo}
                 alt="Alpha Pharma Logo"
-                className="w-50 h-50 object-contain -mt-10"
+                className="w-40 h-40 sm:w-50 sm:h-50 object-contain -mt-6 sm:-mt-10"
               />
             </div>
 
             {/* FORM */}
-            <div className="px-6 pb-4 -mt-10">
+            <div className="px-3 sm:px-6 pb-4 -mt-6 sm:-mt-10">
               {(status === "idle" || status === "loading") && (
                 <form
                   onSubmit={handleVerify}
-                  className="space-y-3 border rounded-xl grid justify-center bg-gray-200"
+                  className="space-y-3 border rounded-xl p-3 sm:p-0 sm:grid sm:justify-center bg-gray-200"
                 >
                   {/* MFG DATE */}
                   <div className="relative" ref={dropdownRef}>
-                    <label className="block text-[13px] ml-10 font-semibold text-gray-800 mb-1.5">
+                    <label className="block text-[12px] sm:text-[13px] sm:ml-10 font-semibold text-gray-800 mb-1.5">
                       Mfg. Date:
                     </label>
 
                     <div
                       onClick={() => setIsOpen(!isOpen)}
-                      className="w-60 flex justify-center ml-10 border border-gray-400 cursor-pointer items-center bg-white hover:border-gray-600 transition-colors"
+                      className="w-full sm:w-60 flex justify-between px-3 sm:justify-center sm:ml-10 border border-gray-400 cursor-pointer items-center bg-white hover:border-gray-600 transition-colors py-2 sm:py-1"
                     >
-                      <span className="text-[20px] text-gray-800">
+                      <span className="text-[16px] sm:text-[20px] text-gray-800">
                         {mfgDate || "02/2022 or before"}
                       </span>
                       <svg
@@ -823,7 +823,7 @@ export default function App() {
                     </div>
 
                     {isOpen && (
-                      <div className="absolute z-20 w-full mt-1 bg-white border border-gray-300 rounded shadow-lg overflow-hidden">
+                      <div className="absolute z-20 w-full sm:w-60 sm:ml-10 mt-1 bg-white border border-gray-300 rounded shadow-lg overflow-hidden">
                         {options.map((opt) => (
                           <div
                             key={opt}
@@ -831,7 +831,7 @@ export default function App() {
                               setMfgDate(opt);
                               setIsOpen(false);
                             }}
-                            className="px-3 py-2 text-[14px] text-gray-800 hover:bg-gray-100 cursor-pointer transition-colors"
+                            className="px-3 py-3 sm:py-2 text-[13px] sm:text-[14px] text-gray-800 hover:bg-gray-100 cursor-pointer transition-colors"
                           >
                             {opt}
                           </div>
@@ -843,13 +843,13 @@ export default function App() {
                   {/* SERIAL */}
                   {isSerialAllowed && (
                     <div>
-                      <label className="block text-[13px] ml-10 font-semibold text-gray-800 mb-1.5">
+                      <label className="block text-[12px] sm:text-[13px] sm:ml-10 font-semibold text-gray-800 mb-1.5">
                         Serial Number:
                       </label>
                       <input
                         type="text"
                         required
-                        className="w-70 ml-10 px-2 py-1 border border-gray-400 bg-white focus:border-gray-600 focus:outline-none text-[14px] text-gray-800 transition-colors"
+                        className="w-full sm:w-70 sm:ml-10 px-3 sm:px-2 py-2 sm:py-1 border border-gray-400 bg-white focus:border-gray-600 focus:outline-none text-[13px] sm:text-[14px] text-gray-800 transition-colors"
                         value={serial}
                         onChange={(e) => setSerial(e.target.value)}
                       />
@@ -858,14 +858,14 @@ export default function App() {
 
                   {/* CODE */}
                   <div>
-                    <label className="block text-[13px] ml-10 font-semibold text-gray-800 mb-1.5">
+                    <label className="block text-[12px] sm:text-[13px] sm:ml-10 font-semibold text-gray-800 mb-1.5">
                       Authentication Code:
                     </label>
                     <input
                       type="text"
                       required
                       disabled={status === "loading"}
-                      className="w-70 px-2 py-1 ml-10 border border-gray-400 bg-white focus:border-gray-600 focus:outline-none text-[14px] text-gray-800 transition-colors disabled:bg-gray-100"
+                      className="w-full sm:w-70 px-3 sm:px-2 py-2 sm:py-1 sm:ml-10 border border-gray-400 bg-white focus:border-gray-600 focus:outline-none text-[13px] sm:text-[14px] text-gray-800 transition-colors disabled:bg-gray-100"
                       value={code}
                       onChange={(e) => setCode(e.target.value)}
                     />
@@ -876,10 +876,10 @@ export default function App() {
                     <button
                       type="submit"
                       disabled={status === "loading"}
-                      className="px-5 py-2 bg-[#0087CC] hover:bg-[#0066AA] text-white font-bold text-[15px] rounded shadow-md transition-all active:scale-95 disabled:opacity-70 uppercase tracking-wide"
+                      className="px-6 sm:px-5 py-2.5 sm:py-2 bg-[#0087CC] hover:bg-[#0066AA] text-white font-bold text-[14px] sm:text-[15px] rounded shadow-md transition-all active:scale-95 disabled:opacity-70 uppercase tracking-wide min-w-[120px]"
                     >
                       {status === "loading" ? (
-                        <div className="w-5 h-5 border-3 border-white/30 border-t-white rounded-full animate-spin"></div>
+                        <div className="w-5 h-5 border-3 border-white/30 border-t-white rounded-full animate-spin mx-auto"></div>
                       ) : (
                         "SUBMIT"
                       )}
@@ -887,13 +887,13 @@ export default function App() {
                   </div>
 
                   {/* NOTE */}
-                  <div className="mt-1 text-[11px] px-4  text-gray-700 leading-tight">
+                  <div className="mt-1 text-[10px] sm:text-[11px] px-2 sm:px-4 text-gray-700 leading-tight">
                     <p><strong>Note:</strong></p>
                     <p className="mt-0.5">Each product can only be authenticated once. All fields are case sensitive.</p>
                   </div>
 
                   {/* WARNING */}
-                  <div className="-mt-2 text-[11px] px-4 text-gray-700 leading-tight">
+                  <div className="-mt-2 text-[10px] sm:text-[11px] px-2 sm:px-4 text-gray-700 leading-tight">
                     <p><strong>Warning:</strong></p>
                     <p className="mt-0.5 text-justify">
                       We strongly discourage anyone from purchasing our products as loose ampoules/trays or blisters/strips without cartons. 
@@ -902,7 +902,7 @@ export default function App() {
                   </div>
 
                   {/* DOWNLOAD APP */}
-                  <div className="-mt-2 mb-1 px-4 flex items-center gap-3 text-[11px]">
+                  <div className="-mt-2 mb-1 px-2 sm:px-4 flex flex-col sm:flex-row items-start sm:items-center gap-2 sm:gap-3 text-[10px] sm:text-[11px]">
                     <strong className="text-gray-800">Download App:</strong>
                     <div className="flex gap-2">
                       <a
@@ -911,7 +911,7 @@ export default function App() {
                         rel="noopener noreferrer"
                         className="hover:opacity-80 transition-opacity"
                       >
-                        <img src={Android} width={28} height={28} alt="Android App" />
+                        <img src={Android} width={28} height={28} alt="Android App" className="w-6 h-6 sm:w-7 sm:h-7" />
                       </a>
                       <a
                         href="https://apps.apple.com/us/app/check-alpha/id1140042313"
@@ -919,7 +919,7 @@ export default function App() {
                         rel="noopener noreferrer"
                         className="hover:opacity-80 transition-opacity"
                       >
-                        <img src={Apple} width={28} height={28} alt="Apple App" />
+                        <img src={Apple} width={28} height={28} alt="Apple App" className="w-6 h-6 sm:w-7 sm:h-7" />
                       </a>
                       <a
                         href="https://play.google.com/store/apps/details?id=prjct.liji.codeauth.app"
@@ -927,7 +927,7 @@ export default function App() {
                         rel="noopener noreferrer"
                         className="hover:opacity-80 transition-opacity"
                       >
-                        <img src={Blackberry} width={28} height={28} alt="BlackBerry App" />
+                        <img src={Blackberry} width={28} height={28} alt="BlackBerry App" className="w-6 h-6 sm:w-7 sm:h-7" />
                       </a>
                     </div>
                   </div>
@@ -936,10 +936,10 @@ export default function App() {
 
               {/* SUCCESS */}
               {status === "success" && (
-                <div className="text-center py-6 animate-in fade-in duration-500">
-                  <div className="w-16 h-16 bg-emerald-100 text-emerald-600 rounded-full flex items-center justify-center mx-auto mb-4">
+                <div className="text-center py-4 sm:py-6 px-2 animate-in fade-in duration-500">
+                  <div className="w-14 h-14 sm:w-16 sm:h-16 bg-emerald-100 text-emerald-600 rounded-full flex items-center justify-center mx-auto mb-3 sm:mb-4">
                     <svg
-                      className="w-8 h-8"
+                      className="w-7 h-7 sm:w-8 sm:h-8"
                       fill="none"
                       stroke="currentColor"
                       viewBox="0 0 24 24"
@@ -953,17 +953,17 @@ export default function App() {
                     </svg>
                   </div>
 
-                  <p className="text-gray-600 font-medium">
+                  <p className="text-sm sm:text-base text-gray-600 font-medium">
                     Your <span className="text-emerald-600 font-bold">{productName}</span>
                   </p>
 
-                  <h2 className="text-xl font-bold text-gray-900 mt-2">
+                  <h2 className="text-lg sm:text-xl font-bold text-gray-900 mt-2">
                     Has been successfully authenticated.
                   </h2>
 
                   <button
                     onClick={isQRMode ? resetQR : resetForm}
-                    className="mt-6 px-6 py-2 bg-gray-100 rounded-lg text-gray-600 font-semibold hover:bg-emerald-600 hover:text-white transition-all"
+                    className="mt-4 sm:mt-6 px-6 py-2.5 sm:py-2 bg-gray-100 rounded-lg text-sm sm:text-base text-gray-600 font-semibold hover:bg-emerald-600 hover:text-white transition-all"
                   >
                     Verify Another
                   </button>
@@ -972,10 +972,10 @@ export default function App() {
 
               {/* DUPLICATE */}
               {status === "duplicate" && (
-                <div className="text-center py-6 animate-in fade-in duration-500">
-                  <div className="w-16 h-16 bg-rose-50 text-rose-500 rounded-full flex items-center justify-center mx-auto mb-4">
+                <div className="text-center py-4 sm:py-6 px-2 animate-in fade-in duration-500">
+                  <div className="w-14 h-14 sm:w-16 sm:h-16 bg-rose-50 text-rose-500 rounded-full flex items-center justify-center mx-auto mb-3 sm:mb-4">
                     <svg
-                      className="w-8 h-8"
+                      className="w-7 h-7 sm:w-8 sm:h-8"
                       fill="none"
                       stroke="currentColor"
                       viewBox="0 0 24 24"
@@ -989,17 +989,17 @@ export default function App() {
                     </svg>
                   </div>
 
-                  <h2 className="text-lg font-bold text-gray-900 leading-tight">
+                  <h2 className="text-base sm:text-lg font-bold text-gray-900 leading-tight px-2">
                     Your product was Successfully Authenticated on:
                   </h2>
 
-                  <div className="mt-4 p-4 bg-rose-50 rounded-lg border border-rose-100 text-rose-600 font-bold text-sm">
+                  <div className="mt-3 sm:mt-4 p-3 sm:p-4 bg-rose-50 rounded-lg border border-rose-100 text-rose-600 font-bold text-xs sm:text-sm">
                     {prevDetails?.fullDate}
                   </div>
-                  <h1 className="text-xl font-bold text-gray-900 mt-2">{productName}</h1>
+                  <h1 className="text-lg sm:text-xl font-bold text-gray-900 mt-2 px-2">{productName}</h1>
                   <button
                     onClick={isQRMode ? resetQR : resetForm}
-                    className="mt-6 w-full py-3 border-2 border-gray-200 rounded-lg font-semibold text-gray-600 hover:bg-gray-50 transition-all"
+                    className="mt-4 sm:mt-6 w-full py-2.5 sm:py-3 border-2 border-gray-200 rounded-lg text-sm sm:text-base font-semibold text-gray-600 hover:bg-gray-50 transition-all"
                   >
                     Go Back
                   </button>
@@ -1008,10 +1008,10 @@ export default function App() {
 
               {/* FAIL */}
               {status === "fail" && (
-                <div className="text-center py-6 animate-in fade-in duration-500">
-                  <div className="w-16 h-16 bg-gray-100 text-gray-400 rounded-full flex items-center justify-center mx-auto mb-4">
+                <div className="text-center py-4 sm:py-6 px-2 animate-in fade-in duration-500">
+                  <div className="w-14 h-14 sm:w-16 sm:h-16 bg-gray-100 text-gray-400 rounded-full flex items-center justify-center mx-auto mb-3 sm:mb-4">
                     <svg
-                      className="w-8 h-8"
+                      className="w-7 h-7 sm:w-8 sm:h-8"
                       fill="none"
                       stroke="currentColor"
                       viewBox="0 0 24 24"
@@ -1025,17 +1025,17 @@ export default function App() {
                     </svg>
                   </div>
 
-                  <h2 className="text-xl font-bold text-gray-900">
+                  <h2 className="text-lg sm:text-xl font-bold text-gray-900">
                     Invalid Credentials
                   </h2>
 
-                  <p className="text-gray-600 mt-2 px-6 text-sm">
+                  <p className="text-gray-600 mt-2 px-4 sm:px-6 text-xs sm:text-sm">
                     The details entered do not match any product in our database.
                   </p>
 
                   <button
                     onClick={isQRMode ? resetQR : resetForm}
-                    className="mt-6 w-full py-3 bg-rose-600 text-white rounded-lg font-bold hover:bg-rose-700 transition-all"
+                    className="mt-4 sm:mt-6 w-full py-2.5 sm:py-3 bg-rose-600 text-white rounded-lg text-sm sm:text-base font-bold hover:bg-rose-700 transition-all"
                   >
                     Try Again
                   </button>
@@ -1044,34 +1044,34 @@ export default function App() {
             </div>
 
             {/* ================= OPTIONAL QR LIST FOR TEST ================= */}
-            <div className="px-6 pb-6">
-              <details className="bg-gray-50 border rounded-xl p-4">
-                <summary className="cursor-pointer font-bold text-sm">
+            {/* <div className="px-3 sm:px-6 pb-4 sm:pb-6">
+              <details className="bg-gray-50 border rounded-xl p-3 sm:p-4">
+                <summary className="cursor-pointer font-bold text-xs sm:text-sm">
                   Show QR Codes For All Products (Testing)
                 </summary>
 
-                <div className="grid grid-cols-1 gap-4 mt-4">
+                <div className="grid grid-cols-1 gap-3 sm:gap-4 mt-3 sm:mt-4">
                   {PRODUCT_DATABASE.map((p) => (
                     <div key={p.qrLink} className="border rounded-xl p-3 bg-white">
-                      <div className="text-sm font-bold">{p.name}</div>
-                      <div className="text-xs text-gray-600 mt-1">
+                      <div className="text-xs sm:text-sm font-bold">{p.name}</div>
+                      <div className="text-[10px] sm:text-xs text-gray-600 mt-1">
                         Code: {p.code} <br />
                         Serial: {p.serial} <br />
                         MFG: {p.mfg}
                       </div>
 
                       <div className="mt-3 flex justify-center">
-                        <QRCodeCanvas value={p.qrLink} size={160} />
+                        <QRCodeCanvas value={p.qrLink} size={120} className="w-28 h-28 sm:w-40 sm:h-40" />
                       </div>
 
-                      <div className="text-[10px] text-gray-500 break-all mt-2 text-center">
+                      <div className="text-[9px] sm:text-[10px] text-gray-500 break-all mt-2 text-center px-1">
                         {p.qrLink}
                       </div>
                     </div>
                   ))}
                 </div>
               </details>
-            </div>
+            </div> */}
           </div>
         </div>
       </div>
