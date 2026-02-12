@@ -444,7 +444,7 @@ import Logo from "./assets/Alpha - Pharma Logo (1).png";
 import Blackberry from "./assets/download (2).png";
 
 /* ===================== DATABASE ===================== */
-const WEBSITE_URL = "https://product-verification-dqhw.vercel.app"; // when deployed use: https://yourdomain.com
+const WEBSITE_URL = "http://localhost:5173"; // when deployed use: https://yourdomain.com
 
 const RAW_PRODUCTS = [
   {
@@ -452,60 +452,70 @@ const RAW_PRODUCTS = [
     code: "ALPHA123",
     mfg: "02/2022 or before",
     name: "Astralean 40mcg - 50 tablets",
+    token: "01",
   },
   {
     serial: "SN1002",
     code: "BRAVO457",
     mfg: "02/2022 or before",
     name: "Cardioplus 10mg - 30 tablets",
+    token: "02",
   },
   {
     serial: "SN1003",
     code: "CHARLIE892",
     mfg: "02/2022 or before",
     name: "Neurovita B12 - 60 capsules",
+    token: "03",
   },
   {
     serial: "SN1004",
     code: "DELTA310",
     mfg: "02/2022 or before",
     name: "GastroCare 20mg - 15 tablets",
+    token: "04",
   },
   {
     serial: "SN1005",
     code: "ECHO765",
     mfg: "02/2022 or before",
     name: "ImmunoShield C - 100 tablets",
+    token: "05",
   },
   {
     serial: "SN1006",
     code: "FOXTROT221",
     mfg: "02/2022 or before",
     name: "PainRelief XR 500mg - 10 tablets",
+    token: "06",
   },
   {
     serial: "SN1007",
     code: "GOLF908",
     mfg: "02/2022 or before",
     name: "RespiraClear 5mg - 20 tablets",
+    token: "07",
   },
   {
     serial: "SN1008",
     code: "HOTEL634",
     mfg: "02/2022 or before",
     name: "Dermacalm Lotion - 100ml",
+    token: "08",
   },
   {
     serial: "SN1009",
     code: "INDIA519",
     mfg: "02/2022 or before",
     name: "OcuVision Plus - 30 softgels",
+    token: "09",
   },
   {
     serial: "SN1010",
     code: "JULIET842",
     mfg: "02/2022 or before",
     name: "VitaBoost Zinc - 90 tablets",
+    token: "10",
   },
 
   // 03/2022 or after
@@ -514,63 +524,72 @@ const RAW_PRODUCTS = [
     code: "BETA456",
     mfg: "03/2022 or after",
     name: "Alphabol 10mg - 50 tablets",
+    token: "11",
   },
   {
     serial: "SN1012",
     code: "LIMA204",
     mfg: "03/2022 or after",
     name: "GlucoGuard 500mg - 30 tablets",
+    token: "12",
   },
   {
     serial: "SN1013",
     code: "MIKE639",
     mfg: "03/2022 or after",
     name: "NeuroCalm 25mg - 15 tablets",
+    token: "13",
   },
   {
     serial: "SN1014",
     code: "NOVEMBER115",
     mfg: "03/2022 or after",
     name: "HeartSafe 75mg - 14 tablets",
+    token: "014",
   },
   {
     serial: "SN1015",
     code: "OSCAR903",
     mfg: "03/2022 or after",
     name: "AllerFree 5mg - 10 tablets",
+    token: "15",
   },
   {
     serial: "SN1016",
     code: "PAPA472",
     mfg: "03/2022 or after",
     name: "VitaD3 Max - 8 capsules",
+    token: "16",
   },
   {
     serial: "SN1017",
     code: "QUEBEC388",
     mfg: "03/2022 or after",
     name: "LiverCare Forte - 60 tablets",
+    token: "17",
   },
   {
     serial: "SN1018",
     code: "ROMEO726",
     mfg: "03/2022 or after",
     name: "RespiraAid Syrup - 100ml",
+    token: "18",
   },
   {
     serial: "SN1019",
     code: "SIERRA550",
     mfg: "03/2022 or after",
     name: "PainBlock Gel - 30g",
+    token: "19",
   },
 ];
 
 // add qrLink
 const PRODUCT_DATABASE = RAW_PRODUCTS.map((p) => ({
   ...p,
-  qrLink: `${WEBSITE_URL}/?serial=${encodeURIComponent(
-    p.serial
-  )}&mfg=${encodeURIComponent(p.mfg)}`,
+  qrLink: `${WEBSITE_URL}/?token=${encodeURIComponent(
+    p.token
+  )}`,
 }));
 
 
@@ -614,19 +633,29 @@ export default function App() {
   }, [isSerialAllowed]);
 
   /* ===================== READ URL PARAMS ===================== */
+  // const queryData = useMemo(() => {
+  //   const params = new URLSearchParams(window.location.search);
+
+  //   const codeParam = params.get("code");
+  //   const serialParam = params.get("serial");
+  //   const mfgParam = params.get("mfg");
+
+  //   return {
+  //     code: codeParam ? codeParam.trim().toUpperCase() : "",
+  //     serial: serialParam ? serialParam.trim().toUpperCase() : "",
+  //     mfg: mfgParam ? mfgParam.trim() : "",
+  //   };
+  // }, []);
+
   const queryData = useMemo(() => {
-    const params = new URLSearchParams(window.location.search);
+  const params = new URLSearchParams(window.location.search);
 
-    const codeParam = params.get("code");
-    const serialParam = params.get("serial");
-    const mfgParam = params.get("mfg");
+  const tokenParam = params.get("token");
 
-    return {
-      code: codeParam ? codeParam.trim().toUpperCase() : "",
-      serial: serialParam ? serialParam.trim().toUpperCase() : "",
-      mfg: mfgParam ? mfgParam.trim() : "",
-    };
-  }, []);
+  return {
+    token: tokenParam ? tokenParam.trim() : "",
+  };
+}, []);
 
   /* ============================================================
       🔥 ONE KEY FUNCTION (SAME FOR QR + MANUAL)
@@ -739,31 +768,17 @@ export default function App() {
   // }, [queryData]);
 
 
-  useEffect(() => {
+ useEffect(() => {
   if (hasVerifiedFromQR.current) return;
 
-  // if no params -> do nothing
-  if (!queryData.mfg) {
+  if (!queryData.token) {
     setStatus("idle");
     return;
   }
 
   hasVerifiedFromQR.current = true;
 
-  const product = PRODUCT_DATABASE.find((p) => {
-    const serialRequired = p.mfg !== "03/2022 or after";
-
-    // 🔥 if serial required -> match serial
-    if (serialRequired) {
-      return (
-        p.serial.toUpperCase() === queryData.serial &&
-        p.mfg === queryData.mfg
-      );
-    }
-
-    // 🔥 if serial not required -> only match mfg
-    return p.mfg === queryData.mfg;
-  });
+  const product = PRODUCT_DATABASE.find((p) => p.token === queryData.token);
 
   if (!product) {
     setStatus("fail");
@@ -772,6 +787,7 @@ export default function App() {
 
   verifyProduct(product);
 }, [queryData]);
+
 
 
   /* ===================== RESET (QR MODE) ===================== */
@@ -798,7 +814,7 @@ export default function App() {
     setMfgDate("02/2022 or before");
   };
 
-  const isQRMode = !!queryData.code;
+  const isQRMode = !!queryData.token;
 
   /* ===================== UI ===================== */
   return (
