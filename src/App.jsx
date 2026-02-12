@@ -818,48 +818,48 @@ export default function App() {
 
   /* ===================== UI ===================== */
   return (
-    <div className="h-150 w-full font-sans flex items-center justify-center">
-      <div className="w-full max-w-[95%] md:w-80 rounded-2xl md:max-w-md shadow-[1px_6px_12px_rgba(0,0,0,0.38)]">
+    <div className="min-h-screen w-full font-sans flex items-center justify-center px-8 py-4 md:p-0">
+      <div className="w-full max-w-[260px] md:w-80 rounded-2xl md:max-w-md shadow-[1px_6px_12px_rgba(0,0,0,0.38)]">
         <div className="bg-gradient-to-br w-full md:w-80 from-[#0087CC] to-[#0066AA] rounded-t-[1.5rem] md:rounded-t-[2rem] rounded-b-[1rem] px-2 md:px-4 pb-2 shadow-2xl">
           {/* Header */}
-          <div className="bg-[#0066AA] md:bg-gradient-to-r md:w-80 md:from-[#0066AA] md:to-[#0066AA] text-white py-2 md:py-3 text-center -ml-2 md:-ml-4 -mt-2 md:-mt-4 rounded-t-[1.5rem] md:rounded-t-[2rem]">
-            <h1 className="text-[14px] md:text-[17px] font-medium tracking-wider uppercase px-2">
+          <div className="bg-[#0066AA] md:bg-gradient-to-r md:w-80 md:from-[#0066AA] md:to-[#0066AA] text-white py-1.5 md:py-3 text-center -ml-2 md:-ml-4 -mt-2 md:-mt-4 rounded-t-[1.5rem] md:rounded-t-[2rem]">
+            <h1 className="text-[11px] md:text-[17px] font-medium tracking-wider uppercase px-2">
               PRODUCT AUTHENTICATION
             </h1>
           </div>
 
           <div className="bg-white rounded-xl overflow-hidden">
             {/* Logo */}
-            <div className="flex md:-mt-6 flex-col items-center rounded-2xl pt-2 md:pt-4 pb-2 px-2 md:px-4">
+            <div className="flex md:-mt-6 flex-col items-center rounded-2xl pt-1.5 md:pt-4 pb-1 md:pb-2 px-2 md:px-4">
               <img
                 src={Logo}
                 alt="Alpha Pharma Logo"
-                className="w-32 h-32 md:w-50 md:h-50 object-contain -mt-6 md:-mt-10"
+                className="w-24 h-24 md:w-50 md:h-50 object-contain -mt-4 md:-mt-10"
               />
             </div>
 
             {/* FORM */}
-            <div className="px-3 md:px-6 pb-4 -mt-6 md:-mt-12">
+            <div className="px-2 md:px-6 pb-3 md:pb-4 -mt-4 md:-mt-12">
               {(status === "idle" || status === "loading") && (
                 <form
                   onSubmit={handleVerify}
-                  className="border w-full md:w-60 rounded-xl p-3 md:p-0 md:grid md:justify-center bg-gray-200"
+                  className="border w-full md:w-60 rounded-lg md:rounded-xl p-2 md:p-0 md:grid md:justify-center bg-gray-200"
                 >
                   {/* MFG DATE */}
-                  <div className="relative" ref={dropdownRef}>
-                    <label className="block text-[11px] md:text-[13px] md:ml-10 font-semibold text-gray-800 mb-1.5">
+                  <div className="relative mb-1.5 md:mb-0" ref={dropdownRef}>
+                    <label className="block text-[8px] md:text-[13px] md:ml-10 font-semibold text-gray-800 mb-1">
                       Mfg. Date:
                     </label>
 
                     <div
                       onClick={() => setIsOpen(!isOpen)}
-                      className="w-full md:w-35 md:ml-10 flex justify-between md:justify-center md:ml-10 border border-gray-400 cursor-pointer items-center bg-white hover:border-gray-600 transition-colors"
+                      className="w-full md:w-35 md:ml-10 flex justify-between px-2 md:px-0 py-1.5 md:py-1 md:justify-center md:ml-10 border border-gray-400 cursor-pointer items-center bg-white hover:border-gray-600 transition-colors rounded md:rounded-none"
                     >
-                      <span className="text-[13px] md:text-[12px] text-gray-800">
+                      <span className="text-[9px] md:text-[12px] text-gray-800">
                         {mfgDate || "02/2022 or before"}
                       </span>
                       <svg
-                        className={`w-4 h-4 text-gray-600 transition-transform duration-200 ${
+                        className={`w-3 h-3 md:w-4 md:h-4 text-gray-600 transition-transform duration-200 ${
                           isOpen ? "rotate-180" : "rotate-0"
                         }`}
                         fill="none"
@@ -884,7 +884,7 @@ export default function App() {
                               setMfgDate(opt);
                               setIsOpen(false);
                             }}
-                            className="px-3 py-2 text-[12px] md:text-[14px] text-gray-800 hover:bg-gray-100 cursor-pointer transition-colors"
+                            className="px-2 md:px-3 py-1.5 md:py-2 text-[9px] md:text-[14px] text-gray-800 hover:bg-gray-100 cursor-pointer transition-colors"
                           >
                             {opt}
                           </div>
@@ -895,14 +895,14 @@ export default function App() {
 
                   {/* SERIAL */}
                   {isSerialAllowed && (
-                    <div>
-                      <label className="block text-[11px] md:text-[13px] md:ml-10 font-semibold text-gray-800">
+                    <div className="mb-1.5 md:mb-0">
+                      <label className="block text-[8px] md:text-[13px] md:ml-10 font-semibold text-gray-800 mb-1">
                         Serial Number:
                       </label>
                       <input
                         type="text"
                         required
-                        className="w-full md:w-40 md:ml-10 border border-gray-400 bg-white focus:border-gray-600 focus:outline-none text-[13px] md:text-[14px] text-gray-800 transition-colors"
+                        className="w-full md:w-40 md:ml-10 px-2 md:px-2 py-1.5 md:py-1 border border-gray-400 bg-white focus:border-gray-600 focus:outline-none text-[9px] md:text-[14px] text-gray-800 transition-colors rounded md:rounded-none"
                         value={serial}
                         onChange={(e) => setSerial(e.target.value)}
                       />
@@ -910,26 +910,26 @@ export default function App() {
                   )}
 
                   {/* CODE */}
-                  <div>
-                    <label className="block text-[11px] md:text-[13px] md:ml-10 font-semibold text-gray-800">
+                  <div className="mb-2 md:mb-0">
+                    <label className="block text-[8px] md:text-[13px] md:ml-10 font-semibold text-gray-800 mb-1">
                       Authentication Code:
                     </label>
                     <input
                       type="text"
                       required
                       disabled={status === "loading"}
-                      className="w-full md:w-40 md:ml-10 border border-gray-400 bg-white focus:border-gray-600 focus:outline-none text-[13px] md:text-[14px] text-gray-800 transition-colors"
+                      className="w-full md:w-40 md:ml-10 px-2 md:px-2 py-1.5 md:py-1 border border-gray-400 bg-white focus:border-gray-600 focus:outline-none text-[9px] md:text-[14px] text-gray-800 transition-colors disabled:bg-gray-100 rounded md:rounded-none"
                       value={code}
                       onChange={(e) => setCode(e.target.value)}
                     />
                   </div>
 
                   {/* SUBMIT */}
-                  <div className="flex justify-center mt-1">
+                  <div className="flex justify-center mb-1.5 md:mb-0 md:mt-1">
                     <button
                       type="submit"
                       disabled={status === "loading"}
-                      className="px-5 md:px-3 py-2 md:py-1 font-light bg-[#0087CC] hover:bg-[#0066AA] text-white text-[14px] md:text-[15px] rounded shadow-md transition-all active:scale-95 disabled:opacity-70 uppercase tracking-wide min-w-[100px]"
+                      className="w-full md:w-auto px-4 md:px-3 py-1.5 md:py-1 font-light bg-[#0087CC] hover:bg-[#0066AA] text-white text-[10px] md:text-[15px] rounded shadow-md transition-all active:scale-95 disabled:opacity-70 uppercase tracking-wide"
                     >
                       {status === "loading" ? (
                         <div className="w-5 h-5 border-3 border-white/30 border-t-white rounded-full animate-spin mx-auto"></div>
@@ -940,13 +940,13 @@ export default function App() {
                   </div>
 
                   {/* NOTE */}
-                  <div className="mt-1 text-[9px] md:text-[11px] px-2 md:px-4 text-gray-700 leading-tight">
+                  <div className="text-[7px] md:text-[11px] px-1 md:px-4 text-gray-700 leading-tight">
                     <p><strong>Note:</strong></p>
                     <p className="mt-0.5">Each product can only be authenticated once. All fields are case sensitive.</p>
                   </div>
 
                   {/* WARNING */}
-                  <div className="text-[9px] md:text-[11px] w-full md:w-60 px-2 md:px-4 text-gray-700 leading-tight">
+                  <div className="text-[7px] md:text-[11px] w-full md:w-60 px-1 md:px-4 text-gray-700 leading-tight mt-1 md:mt-0">
                     <p><strong>Warning:</strong></p>
                     <p className="mt-0.5 text-justify">
                       We strongly discourage anyone from purchasing our products as loose ampoules/trays or blisters/strips without cartons. 
@@ -955,16 +955,16 @@ export default function App() {
                   </div>
 
                   {/* DOWNLOAD APP */}
-                  <div className="mb-1 px-2 md:px-4 flex flex-col md:flex-row items-start md:items-center gap-2 md:gap-3 text-[9px] md:text-[11px]">
+                  <div className="mt-1 md:mb-1 px-1 md:px-4 flex flex-row items-center gap-1 md:gap-3 text-[7px] md:text-[11px]">
                     <strong className="text-gray-800">Download App:</strong>
-                    <div className="flex gap-2">
+                    <div className="flex gap-1.5 md:gap-2">
                       <a
                         href="https://play.google.com/store/apps/details?id=prjct.liji.codeauth.app"
                         target="_blank"
                         rel="noopener noreferrer"
                         className="hover:opacity-80 transition-opacity"
                       >
-                        <img src={Android} width={28} height={28} alt="Android App" className="w-6 h-6 md:w-7 md:h-7" />
+                        <img src={Android} width={28} height={28} alt="Android App" className="w-5 h-5 md:w-7 md:h-7" />
                       </a>
                       <a
                         href="https://apps.apple.com/us/app/check-alpha/id1140042313"
@@ -972,7 +972,7 @@ export default function App() {
                         rel="noopener noreferrer"
                         className="hover:opacity-80 transition-opacity"
                       >
-                        <img src={Apple} width={28} height={28} alt="Apple App" className="w-6 h-6 md:w-7 md:h-7" />
+                        <img src={Apple} width={28} height={28} alt="Apple App" className="w-5 h-5 md:w-7 md:h-7" />
                       </a>
                       <a
                         href="https://play.google.com/store/apps/details?id=prjct.liji.codeauth.app"
@@ -980,7 +980,7 @@ export default function App() {
                         rel="noopener noreferrer"
                         className="hover:opacity-80 transition-opacity"
                       >
-                        <img src={Blackberry} width={28} height={28} alt="BlackBerry App" className="w-6 h-6 md:w-7 md:h-7" />
+                        <img src={Blackberry} width={28} height={28} alt="BlackBerry App" className="w-5 h-5 md:w-7 md:h-7" />
                       </a>
                     </div>
                   </div>
@@ -989,82 +989,28 @@ export default function App() {
 
               {/* SUCCESS */}
               {status === "success" && (
-                <div className="text-center py-4 h-80 md:py-6 px-2 animate-in fade-in rounded-xl bg-gray-200 duration-500">
-                  {/* <div className="w-14 h-14 sm:w-16 sm:h-16 bg-emerald-100 text-emerald-600 rounded-full flex items-center justify-center mx-auto mb-3 sm:mb-4">
-                    <svg
-                      className="w-7 h-7 sm:w-8 sm:h-8"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                      strokeWidth="3"
-                    >
-                      <path
-                        d="M5 13l4 4L19 7"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                      />
-                    </svg>
-                  </div> */}
-
-                  <p className="text-sm md:text-base text-justify text-gray-600 font-medium">
+                <div className="text-center py-3 md:py-6 px-1.5 md:px-2 animate-in fade-in rounded-xl bg-gray-200 duration-500">
+                  <p className="text-[9px] md:text-base text-justify text-gray-600 font-medium leading-tight">
                     Your <span className="text-emerald-600 font-bold">{productName}</span>  Has been successfully authenticated.
                   </p>
-{/* 
-                  <h2 className="text-lg sm:text-xl font-bold text-gray-900 mt-2">
-                    Has been successfully authenticated.
-                  </h2> */}
-
-                  {/* <button
-                    onClick={isQRMode ? resetQR : resetForm}
-                    className="mt-4 sm:mt-6 px-6 py-2.5 sm:py-2 bg-gray-100 rounded-lg text-sm sm:text-base text-gray-600 font-semibold hover:bg-emerald-600 hover:text-white transition-all"
-                  >
-                    Verify Another
-                  </button> */}
                 </div>
               )}
 
               {/* DUPLICATE */}
               {status === "duplicate" && (
-                <div className="text-center py-4 h-80 md:py-6 px-2 animate-in fade-in bg-gray-200 border rounded-xl duration-500">
-                  {/* <div className="w-14 h-14 sm:w-16 sm:h-16 bg-rose-50 text-rose-500 rounded-full flex items-center justify-center mx-auto mb-3 sm:mb-4">
-                    <svg
-                      className="w-7 h-7 sm:w-8 sm:h-8"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                      strokeWidth="2.5"
-                    >
-                      <path
-                        d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                      />
-                    </svg>
-                  </div> */}
-
-                  <p className="text-sm md:text-sm font-medium text-red-500 text-justify">
+                <div className="text-center py-3 md:py-6 px-1.5 md:px-2 animate-in fade-in bg-gray-200 border rounded-xl duration-500">
+                  <p className="text-[9px] md:text-sm font-medium text-red-500 text-justify leading-tight">
                     Your product was Successfully Authenticated on {prevDetails?.fullDate}
                   </p>
-
-                  {/* <div className="mt-3 sm:mt-4 p-3 sm:p-4 bg-rose-50 rounded-lg border border-rose-100 text-rose-600 font-bold text-xs sm:text-sm">
-                    
-                  </div> */}
-                  {/* <h1 className="text-lg sm:text-xl font-bold text-gray-900 mt-2 px-2">{productName}</h1> */}
-                  {/* <button
-                    onClick={isQRMode ? resetQR : resetForm}
-                    className="mt-4 sm:mt-6 w-full py-2.5 sm:py-3 border-2 border-gray-200 rounded-lg text-sm sm:text-base font-semibold text-gray-600 hover:bg-gray-50 transition-all"
-                  >
-                    Go Back
-                  </button> */}
                 </div>
               )}
 
               {/* FAIL */}
               {status === "fail" && (
-                <div className="text-center py-4 md:py-6 px-2 animate-in fade-in duration-500">
-                  <div className="w-14 h-14 md:w-16 md:h-16 bg-gray-100 text-gray-400 rounded-full flex items-center justify-center mx-auto mb-3 md:mb-4">
+                <div className="text-center py-3 md:py-6 px-1.5 md:px-2 animate-in fade-in rounded-xl bg-gray-200 duration-500">
+                  <div className="w-10 h-10 md:w-16 md:h-16 bg-gray-100 text-gray-400 rounded-full flex items-center justify-center mx-auto mb-2 md:mb-4">
                     <svg
-                      className="w-7 h-7 md:w-8 md:h-8"
+                      className="w-5 h-5 md:w-8 md:h-8"
                       fill="none"
                       stroke="currentColor"
                       viewBox="0 0 24 24"
@@ -1078,17 +1024,17 @@ export default function App() {
                     </svg>
                   </div>
 
-                  <h2 className="text-lg md:text-xl font-bold text-gray-900">
+                  <h2 className="text-[10px] md:text-xl font-bold text-gray-900">
                     Invalid Credentials
                   </h2>
 
-                  <p className="text-gray-600 mt-2 px-4 md:px-6 text-xs md:text-sm">
+                  <p className="text-gray-600 mt-1.5 md:mt-2 px-2 md:px-6 text-[8px] md:text-sm leading-tight">
                     The details entered do not match any product in our database.
                   </p>
 
                   <button
                     onClick={isQRMode ? resetQR : resetForm}
-                    className="mt-4 md:mt-6 w-full py-2.5 md:py-3 bg-rose-600 text-white rounded-lg text-sm md:text-base font-bold hover:bg-rose-700 transition-all"
+                    className="mt-3 md:mt-6 w-full py-1.5 md:py-3 bg-rose-600 text-white rounded-lg text-[9px] md:text-base font-bold hover:bg-rose-700 transition-all"
                   >
                     Try Again
                   </button>
@@ -1117,14 +1063,14 @@ export default function App() {
                         <QRCodeCanvas value={p.qrLink} size={120} className="w-28 h-28 sm:w-40 sm:h-40" />
                       </div>
 
-                      <div className="text-[9px] sm:text-[10px] text-gray-500 break-all mt-2 text-center px-1">
+                      {/* <div className="text-[9px] sm:text-[10px] text-gray-500 break-all mt-2 text-center px-1">
                         {p.qrLink}
-                      </div>
-                    </div>
+                      </div> */}
+                    {/* </div>
                   ))}
                 </div>
               </details>
-            </div> */}
+            </div>  */}
           </div>
         </div>
       </div>
