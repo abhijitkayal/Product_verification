@@ -438,10 +438,10 @@
 import React, { useEffect, useMemo, useRef, useState } from "react";
 import { QRCodeCanvas } from "qrcode.react";
 
-import Android from "./assets/download.png";
-import Apple from "./assets/download (1).png";
+import Android from "./assets/download-removebg-preview (1).png";
+import Apple from "./assets/download__1_-removebg-preview (1).png";
 import Logo from "./assets/Alpha - Pharma Logo (1).png";
-import Blackberry from "./assets/download (2).png";
+import Blackberry from "./assets/download__2_-removebg-preview (1).png";
 
 /* ===================== DATABASE ===================== */
 const WEBSITE_URL = "https://product-verification-dqhw.vercel.app/"; // when deployed use: https://yourdomain.com
@@ -818,44 +818,44 @@ export default function App() {
 
   /* ===================== UI ===================== */
   return (
-    <div className="min-h-screen w-full bg-gray-50 font-sans flex items-center justify-center p-2 sm:p-4">
-      <div className="w-full max-w-md">
-        <div className="bg-gradient-to-br from-[#0087CC] to-[#0066AA] rounded-t-[1.5rem] sm:rounded-t-[2rem] rounded-b-[1rem] px-2 sm:px-4 pb-2 shadow-2xl">
+    <div className="h-150 w-full font-sans flex items-center justify-center">
+      <div className="w-full max-w-[95%] md:w-80 rounded-2xl md:max-w-md shadow-[1px_6px_12px_rgba(0,0,0,0.38)]">
+        <div className="bg-gradient-to-br w-full md:w-80 from-[#0087CC] to-[#0066AA] rounded-t-[1.5rem] md:rounded-t-[2rem] rounded-b-[1rem] px-2 md:px-4 pb-2 shadow-2xl">
           {/* Header */}
-          <div className="bg-0066AA sm:bg-gradient-to-r md:w-md sm:from-[#0066AA] sm:to-[#0066AA] text-white py-2 sm:py-3 text-center -ml-2 sm:-ml-4 w-full -mt-2 sm:-mt-4 rounded-t-[1.5rem] sm:rounded-t-[2rem]">
-            <h1 className="text-[15px] sm:text-[17px] md:text-[19px] font-bold tracking-wider uppercase px-2">
+          <div className="bg-[#0066AA] md:bg-gradient-to-r md:w-80 md:from-[#0066AA] md:to-[#0066AA] text-white py-2 md:py-3 text-center -ml-2 md:-ml-4 -mt-2 md:-mt-4 rounded-t-[1.5rem] md:rounded-t-[2rem]">
+            <h1 className="text-[14px] md:text-[17px] font-medium tracking-wider uppercase px-2">
               PRODUCT AUTHENTICATION
             </h1>
           </div>
 
           <div className="bg-white rounded-xl overflow-hidden">
             {/* Logo */}
-            <div className="flex flex-col items-center rounded-2xl pt-2 sm:pt-4 pb-2 px-2 sm:px-4">
+            <div className="flex md:-mt-6 flex-col items-center rounded-2xl pt-2 md:pt-4 pb-2 px-2 md:px-4">
               <img
                 src={Logo}
                 alt="Alpha Pharma Logo"
-                className="w-40 h-40 sm:w-50 sm:h-50 object-contain -mt-6 sm:-mt-10"
+                className="w-32 h-32 md:w-50 md:h-50 object-contain -mt-6 md:-mt-10"
               />
             </div>
 
             {/* FORM */}
-            <div className="px-3 sm:px-6 pb-4 -mt-6 sm:-mt-10">
+            <div className="px-3 md:px-6 pb-4 -mt-6 md:-mt-12">
               {(status === "idle" || status === "loading") && (
                 <form
                   onSubmit={handleVerify}
-                  className="space-y-3 border rounded-xl p-3 sm:p-0 sm:grid sm:justify-center bg-gray-200"
+                  className="border w-full md:w-60 rounded-xl p-3 md:p-0 md:grid md:justify-center bg-gray-200"
                 >
                   {/* MFG DATE */}
                   <div className="relative" ref={dropdownRef}>
-                    <label className="block text-[12px] sm:text-[13px] sm:ml-10 font-semibold text-gray-800 mb-1.5">
+                    <label className="block text-[11px] md:text-[13px] md:ml-10 font-semibold text-gray-800 mb-1.5">
                       Mfg. Date:
                     </label>
 
                     <div
                       onClick={() => setIsOpen(!isOpen)}
-                      className="w-full sm:w-60 flex justify-between px-3 sm:justify-center sm:ml-10 border border-gray-400 cursor-pointer items-center bg-white hover:border-gray-600 transition-colors py-2 sm:py-1"
+                      className="w-full md:w-35 md:ml-10 flex justify-between md:justify-center md:ml-10 border border-gray-400 cursor-pointer items-center bg-white hover:border-gray-600 transition-colors"
                     >
-                      <span className="text-[16px] sm:text-[20px] text-gray-800">
+                      <span className="text-[13px] md:text-[12px] text-gray-800">
                         {mfgDate || "02/2022 or before"}
                       </span>
                       <svg
@@ -876,7 +876,7 @@ export default function App() {
                     </div>
 
                     {isOpen && (
-                      <div className="absolute z-20 w-full sm:w-60 sm:ml-10 mt-1 bg-white border border-gray-300 rounded shadow-lg overflow-hidden">
+                      <div className="absolute z-20 w-full md:w-60 md:ml-10 mt-1 bg-white border border-gray-300 rounded shadow-lg overflow-hidden">
                         {options.map((opt) => (
                           <div
                             key={opt}
@@ -884,7 +884,7 @@ export default function App() {
                               setMfgDate(opt);
                               setIsOpen(false);
                             }}
-                            className="px-3 py-3 sm:py-2 text-[13px] sm:text-[14px] text-gray-800 hover:bg-gray-100 cursor-pointer transition-colors"
+                            className="px-3 py-2 text-[12px] md:text-[14px] text-gray-800 hover:bg-gray-100 cursor-pointer transition-colors"
                           >
                             {opt}
                           </div>
@@ -896,13 +896,13 @@ export default function App() {
                   {/* SERIAL */}
                   {isSerialAllowed && (
                     <div>
-                      <label className="block text-[12px] sm:text-[13px] sm:ml-10 font-semibold text-gray-800 mb-1.5">
+                      <label className="block text-[11px] md:text-[13px] md:ml-10 font-semibold text-gray-800">
                         Serial Number:
                       </label>
                       <input
                         type="text"
                         required
-                        className="w-full sm:w-70 sm:ml-10 px-3 sm:px-2 py-2 sm:py-1 border border-gray-400 bg-white focus:border-gray-600 focus:outline-none text-[13px] sm:text-[14px] text-gray-800 transition-colors"
+                        className="w-full md:w-40 md:ml-10 border border-gray-400 bg-white focus:border-gray-600 focus:outline-none text-[13px] md:text-[14px] text-gray-800 transition-colors"
                         value={serial}
                         onChange={(e) => setSerial(e.target.value)}
                       />
@@ -911,25 +911,25 @@ export default function App() {
 
                   {/* CODE */}
                   <div>
-                    <label className="block text-[12px] sm:text-[13px] sm:ml-10 font-semibold text-gray-800 mb-1.5">
+                    <label className="block text-[11px] md:text-[13px] md:ml-10 font-semibold text-gray-800">
                       Authentication Code:
                     </label>
                     <input
                       type="text"
                       required
                       disabled={status === "loading"}
-                      className="w-full sm:w-70 px-3 sm:px-2 py-2 sm:py-1 sm:ml-10 border border-gray-400 bg-white focus:border-gray-600 focus:outline-none text-[13px] sm:text-[14px] text-gray-800 transition-colors disabled:bg-gray-100"
+                      className="w-full md:w-40 md:ml-10 border border-gray-400 bg-white focus:border-gray-600 focus:outline-none text-[13px] md:text-[14px] text-gray-800 transition-colors"
                       value={code}
                       onChange={(e) => setCode(e.target.value)}
                     />
                   </div>
 
                   {/* SUBMIT */}
-                  <div className="flex justify-center pt-2">
+                  <div className="flex justify-center mt-1">
                     <button
                       type="submit"
                       disabled={status === "loading"}
-                      className="px-6 sm:px-5 py-2.5 sm:py-2 bg-[#0087CC] hover:bg-[#0066AA] text-white font-bold text-[14px] sm:text-[15px] rounded shadow-md transition-all active:scale-95 disabled:opacity-70 uppercase tracking-wide min-w-[120px]"
+                      className="px-5 md:px-3 py-2 md:py-1 font-light bg-[#0087CC] hover:bg-[#0066AA] text-white text-[14px] md:text-[15px] rounded shadow-md transition-all active:scale-95 disabled:opacity-70 uppercase tracking-wide min-w-[100px]"
                     >
                       {status === "loading" ? (
                         <div className="w-5 h-5 border-3 border-white/30 border-t-white rounded-full animate-spin mx-auto"></div>
@@ -940,13 +940,13 @@ export default function App() {
                   </div>
 
                   {/* NOTE */}
-                  <div className="mt-1 text-[10px] sm:text-[11px] px-2 sm:px-4 text-gray-700 leading-tight">
+                  <div className="mt-1 text-[9px] md:text-[11px] px-2 md:px-4 text-gray-700 leading-tight">
                     <p><strong>Note:</strong></p>
                     <p className="mt-0.5">Each product can only be authenticated once. All fields are case sensitive.</p>
                   </div>
 
                   {/* WARNING */}
-                  <div className="-mt-2 text-[10px] sm:text-[11px] px-2 sm:px-4 text-gray-700 leading-tight">
+                  <div className="text-[9px] md:text-[11px] w-full md:w-60 px-2 md:px-4 text-gray-700 leading-tight">
                     <p><strong>Warning:</strong></p>
                     <p className="mt-0.5 text-justify">
                       We strongly discourage anyone from purchasing our products as loose ampoules/trays or blisters/strips without cartons. 
@@ -955,7 +955,7 @@ export default function App() {
                   </div>
 
                   {/* DOWNLOAD APP */}
-                  <div className="-mt-2 mb-1 px-2 sm:px-4 flex flex-col sm:flex-row items-start sm:items-center gap-2 sm:gap-3 text-[10px] sm:text-[11px]">
+                  <div className="mb-1 px-2 md:px-4 flex flex-col md:flex-row items-start md:items-center gap-2 md:gap-3 text-[9px] md:text-[11px]">
                     <strong className="text-gray-800">Download App:</strong>
                     <div className="flex gap-2">
                       <a
@@ -964,7 +964,7 @@ export default function App() {
                         rel="noopener noreferrer"
                         className="hover:opacity-80 transition-opacity"
                       >
-                        <img src={Android} width={28} height={28} alt="Android App" className="w-6 h-6 sm:w-7 sm:h-7" />
+                        <img src={Android} width={28} height={28} alt="Android App" className="w-6 h-6 md:w-7 md:h-7" />
                       </a>
                       <a
                         href="https://apps.apple.com/us/app/check-alpha/id1140042313"
@@ -972,7 +972,7 @@ export default function App() {
                         rel="noopener noreferrer"
                         className="hover:opacity-80 transition-opacity"
                       >
-                        <img src={Apple} width={28} height={28} alt="Apple App" className="w-6 h-6 sm:w-7 sm:h-7" />
+                        <img src={Apple} width={28} height={28} alt="Apple App" className="w-6 h-6 md:w-7 md:h-7" />
                       </a>
                       <a
                         href="https://play.google.com/store/apps/details?id=prjct.liji.codeauth.app"
@@ -980,7 +980,7 @@ export default function App() {
                         rel="noopener noreferrer"
                         className="hover:opacity-80 transition-opacity"
                       >
-                        <img src={Blackberry} width={28} height={28} alt="BlackBerry App" className="w-6 h-6 sm:w-7 sm:h-7" />
+                        <img src={Blackberry} width={28} height={28} alt="BlackBerry App" className="w-6 h-6 md:w-7 md:h-7" />
                       </a>
                     </div>
                   </div>
@@ -989,8 +989,8 @@ export default function App() {
 
               {/* SUCCESS */}
               {status === "success" && (
-                <div className="text-center py-4 sm:py-6 px-2 animate-in fade-in duration-500">
-                  <div className="w-14 h-14 sm:w-16 sm:h-16 bg-emerald-100 text-emerald-600 rounded-full flex items-center justify-center mx-auto mb-3 sm:mb-4">
+                <div className="text-center py-4 h-80 md:py-6 px-2 animate-in fade-in rounded-xl bg-gray-200 duration-500">
+                  {/* <div className="w-14 h-14 sm:w-16 sm:h-16 bg-emerald-100 text-emerald-600 rounded-full flex items-center justify-center mx-auto mb-3 sm:mb-4">
                     <svg
                       className="w-7 h-7 sm:w-8 sm:h-8"
                       fill="none"
@@ -1004,29 +1004,29 @@ export default function App() {
                         strokeLinejoin="round"
                       />
                     </svg>
-                  </div>
+                  </div> */}
 
-                  <p className="text-sm sm:text-base text-gray-600 font-medium">
-                    Your <span className="text-emerald-600 font-bold">{productName}</span>
+                  <p className="text-sm md:text-base text-justify text-gray-600 font-medium">
+                    Your <span className="text-emerald-600 font-bold">{productName}</span>  Has been successfully authenticated.
                   </p>
-
+{/* 
                   <h2 className="text-lg sm:text-xl font-bold text-gray-900 mt-2">
                     Has been successfully authenticated.
-                  </h2>
+                  </h2> */}
 
-                  <button
+                  {/* <button
                     onClick={isQRMode ? resetQR : resetForm}
                     className="mt-4 sm:mt-6 px-6 py-2.5 sm:py-2 bg-gray-100 rounded-lg text-sm sm:text-base text-gray-600 font-semibold hover:bg-emerald-600 hover:text-white transition-all"
                   >
                     Verify Another
-                  </button>
+                  </button> */}
                 </div>
               )}
 
               {/* DUPLICATE */}
               {status === "duplicate" && (
-                <div className="text-center py-4 sm:py-6 px-2 animate-in fade-in duration-500">
-                  <div className="w-14 h-14 sm:w-16 sm:h-16 bg-rose-50 text-rose-500 rounded-full flex items-center justify-center mx-auto mb-3 sm:mb-4">
+                <div className="text-center py-4 h-80 md:py-6 px-2 animate-in fade-in bg-gray-200 border rounded-xl duration-500">
+                  {/* <div className="w-14 h-14 sm:w-16 sm:h-16 bg-rose-50 text-rose-500 rounded-full flex items-center justify-center mx-auto mb-3 sm:mb-4">
                     <svg
                       className="w-7 h-7 sm:w-8 sm:h-8"
                       fill="none"
@@ -1040,31 +1040,31 @@ export default function App() {
                         strokeLinejoin="round"
                       />
                     </svg>
-                  </div>
+                  </div> */}
 
-                  <h2 className="text-base sm:text-lg font-bold text-gray-900 leading-tight px-2">
-                    Your product was Successfully Authenticated on:
-                  </h2>
+                  <p className="text-sm md:text-sm font-medium text-red-500 text-justify">
+                    Your product was Successfully Authenticated on {prevDetails?.fullDate}
+                  </p>
 
-                  <div className="mt-3 sm:mt-4 p-3 sm:p-4 bg-rose-50 rounded-lg border border-rose-100 text-rose-600 font-bold text-xs sm:text-sm">
-                    {prevDetails?.fullDate}
-                  </div>
-                  <h1 className="text-lg sm:text-xl font-bold text-gray-900 mt-2 px-2">{productName}</h1>
-                  <button
+                  {/* <div className="mt-3 sm:mt-4 p-3 sm:p-4 bg-rose-50 rounded-lg border border-rose-100 text-rose-600 font-bold text-xs sm:text-sm">
+                    
+                  </div> */}
+                  {/* <h1 className="text-lg sm:text-xl font-bold text-gray-900 mt-2 px-2">{productName}</h1> */}
+                  {/* <button
                     onClick={isQRMode ? resetQR : resetForm}
                     className="mt-4 sm:mt-6 w-full py-2.5 sm:py-3 border-2 border-gray-200 rounded-lg text-sm sm:text-base font-semibold text-gray-600 hover:bg-gray-50 transition-all"
                   >
                     Go Back
-                  </button>
+                  </button> */}
                 </div>
               )}
 
               {/* FAIL */}
               {status === "fail" && (
-                <div className="text-center py-4 sm:py-6 px-2 animate-in fade-in duration-500">
-                  <div className="w-14 h-14 sm:w-16 sm:h-16 bg-gray-100 text-gray-400 rounded-full flex items-center justify-center mx-auto mb-3 sm:mb-4">
+                <div className="text-center py-4 md:py-6 px-2 animate-in fade-in duration-500">
+                  <div className="w-14 h-14 md:w-16 md:h-16 bg-gray-100 text-gray-400 rounded-full flex items-center justify-center mx-auto mb-3 md:mb-4">
                     <svg
-                      className="w-7 h-7 sm:w-8 sm:h-8"
+                      className="w-7 h-7 md:w-8 md:h-8"
                       fill="none"
                       stroke="currentColor"
                       viewBox="0 0 24 24"
@@ -1078,17 +1078,17 @@ export default function App() {
                     </svg>
                   </div>
 
-                  <h2 className="text-lg sm:text-xl font-bold text-gray-900">
+                  <h2 className="text-lg md:text-xl font-bold text-gray-900">
                     Invalid Credentials
                   </h2>
 
-                  <p className="text-gray-600 mt-2 px-4 sm:px-6 text-xs sm:text-sm">
+                  <p className="text-gray-600 mt-2 px-4 md:px-6 text-xs md:text-sm">
                     The details entered do not match any product in our database.
                   </p>
 
                   <button
                     onClick={isQRMode ? resetQR : resetForm}
-                    className="mt-4 sm:mt-6 w-full py-2.5 sm:py-3 bg-rose-600 text-white rounded-lg text-sm sm:text-base font-bold hover:bg-rose-700 transition-all"
+                    className="mt-4 md:mt-6 w-full py-2.5 md:py-3 bg-rose-600 text-white rounded-lg text-sm md:text-base font-bold hover:bg-rose-700 transition-all"
                   >
                     Try Again
                   </button>
