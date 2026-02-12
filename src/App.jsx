@@ -568,10 +568,11 @@ const RAW_PRODUCTS = [
 // add qrLink
 const PRODUCT_DATABASE = RAW_PRODUCTS.map((p) => ({
   ...p,
-  qrLink: `${WEBSITE_URL}/?code=${encodeURIComponent(
-    p.code
-  )}&serial=${encodeURIComponent(p.serial)}&mfg=${encodeURIComponent(p.mfg)}`,
+  qrLink: `${WEBSITE_URL}/?serial=${encodeURIComponent(
+    p.serial
+  )}&mfg=${encodeURIComponent(p.mfg)}`,
 }));
+
 
 /* ===================================================== */
 
@@ -706,36 +707,72 @@ export default function App() {
   };
 
   /* ===================== AUTO VERIFY FROM QR LINK ===================== */
+  // useEffect(() => {
+  //   // STOP running twice in dev
+  //   if (hasVerifiedFromQR.current) return;
+
+  //   // if no params -> do nothing
+  //   if (!queryData.code || !queryData.mfg) {
+  //     setStatus("idle");
+  //     return;
+  //   }
+
+  //   hasVerifiedFromQR.current = true;
+
+  //   const product = PRODUCT_DATABASE.find((p) => {
+  //     const serialRequired = p.mfg !== "03/2022 or after";
+
+  //     return (
+  //       p.code.toUpperCase() === queryData.code &&
+  //       p.mfg === queryData.mfg &&
+  //       (serialRequired ? p.serial.toUpperCase() === queryData.serial : true)
+  //     );
+  //   });
+
+  //   if (!product) {
+  //     setStatus("fail");
+  //     return;
+  //   }
+
+  //   // ✅ use ONE verify function
+  //   verifyProduct(product);
+  // }, [queryData]);
+
+
   useEffect(() => {
-    // STOP running twice in dev
-    if (hasVerifiedFromQR.current) return;
+  if (hasVerifiedFromQR.current) return;
 
-    // if no params -> do nothing
-    if (!queryData.code || !queryData.mfg) {
-      setStatus("idle");
-      return;
-    }
+  // if no params -> do nothing
+  if (!queryData.mfg) {
+    setStatus("idle");
+    return;
+  }
 
-    hasVerifiedFromQR.current = true;
+  hasVerifiedFromQR.current = true;
 
-    const product = PRODUCT_DATABASE.find((p) => {
-      const serialRequired = p.mfg !== "03/2022 or after";
+  const product = PRODUCT_DATABASE.find((p) => {
+    const serialRequired = p.mfg !== "03/2022 or after";
 
+    // 🔥 if serial required -> match serial
+    if (serialRequired) {
       return (
-        p.code.toUpperCase() === queryData.code &&
-        p.mfg === queryData.mfg &&
-        (serialRequired ? p.serial.toUpperCase() === queryData.serial : true)
+        p.serial.toUpperCase() === queryData.serial &&
+        p.mfg === queryData.mfg
       );
-    });
-
-    if (!product) {
-      setStatus("fail");
-      return;
     }
 
-    // ✅ use ONE verify function
-    verifyProduct(product);
-  }, [queryData]);
+    // 🔥 if serial not required -> only match mfg
+    return p.mfg === queryData.mfg;
+  });
+
+  if (!product) {
+    setStatus("fail");
+    return;
+  }
+
+  verifyProduct(product);
+}, [queryData]);
+
 
   /* ===================== RESET (QR MODE) ===================== */
   const resetQR = () => {
@@ -1044,7 +1081,7 @@ export default function App() {
             </div>
 
             {/* ================= OPTIONAL QR LIST FOR TEST ================= */}
-            {/* <div className="px-3 sm:px-6 pb-4 sm:pb-6">
+            <div className="px-3 sm:px-6 pb-4 sm:pb-6">
               <details className="bg-gray-50 border rounded-xl p-3 sm:p-4">
                 <summary className="cursor-pointer font-bold text-xs sm:text-sm">
                   Show QR Codes For All Products (Testing)
@@ -1071,7 +1108,7 @@ export default function App() {
                   ))}
                 </div>
               </details>
-            </div> */}
+            </div>
           </div>
         </div>
       </div>
