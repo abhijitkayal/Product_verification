@@ -818,8 +818,8 @@ export default function App() {
 
   /* ===================== UI ===================== */
   return (
-    <div className="min-h-screen md:-mt-6 w-full font-sans flex items-center justify-center px-4 py-6 md:p-0">
-      <div className="w-full max-w-[280px] md:w-80 rounded-2xl md:max-w-md shadow-[1px_6px_12px_rgba(0,0,0,0.38)]">
+    <div className="min-h-screen md:-mt-2 w-full font-sans flex items-center justify-center px-4 py-6 md:p-0">
+      <div className="w-full max-w-[280px] md:w-80 rounded-2xl md:max-w-md shadow-[0px_6px_12px_rgba(0,0,0,0.58)]">
         <div className="bg-gradient-to-br w-full md:w-80 from-[#0087CC] to-[#0066AA] rounded-t-[1.5rem] md:rounded-t-[2rem] rounded-b-[1rem] px-2 md:px-4 pb-2 shadow-2xl">
           {/* Header */}
           <div className="bg-[#0066AA] md:bg-gradient-to-r md:w-80 w-70 md:from-[#0066AA] md:to-[#0066AA] text-white py-2 md:py-3 text-center -ml-2 md:-ml-4 -mt-2 md:-mt-4 rounded-t-[1.5rem] md:rounded-t-[2rem]">
