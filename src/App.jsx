@@ -1008,7 +1008,7 @@ export default function App() {
               {/* FAIL */}
               {status === "fail" && (
                 <div className="text-center py-3 h-70 md:py-6 px-1.5 md:px-2 animate-in fade-in rounded-xl bg-gray-200 duration-500">
-                  <div className="w-10 h-10 md:w-16 md:h-16 bg-gray-100 text-gray-400 rounded-full flex items-center justify-center mx-auto mb-2 md:mb-4">
+                  {/* <div className="w-10 h-10 md:w-16 md:h-16 bg-gray-100 text-gray-400 rounded-full flex items-center justify-center mx-auto mb-2 md:mb-4">
                     <svg
                       className="w-5 h-5 md:w-8 md:h-8"
                       fill="none"
@@ -1022,9 +1022,9 @@ export default function App() {
                         strokeLinejoin="round"
                       />
                     </svg>
-                  </div>
+                  </div> */}
 
-                  <h2 className="text-[10px] md:text-xl font-bold text-gray-900">
+                  <h2 className="text-[10px] md:text-xl font-bold text-red-500">
                     Invalid Credentials
                   </h2>
 
