@@ -818,7 +818,7 @@ export default function App() {
 
   /* ===================== UI ===================== */
   return (
-    <div className="min-h-screen w-full font-sans flex items-center justify-center px-4 py-6 md:p-0">
+    <div className="min-h-screen md:-mt-6 w-full font-sans flex items-center justify-center px-4 py-6 md:p-0">
       <div className="w-full max-w-[280px] md:w-80 rounded-2xl md:max-w-md shadow-[1px_6px_12px_rgba(0,0,0,0.38)]">
         <div className="bg-gradient-to-br w-full md:w-80 from-[#0087CC] to-[#0066AA] rounded-t-[1.5rem] md:rounded-t-[2rem] rounded-b-[1rem] px-2 md:px-4 pb-2 shadow-2xl">
           {/* Header */}
@@ -843,7 +843,7 @@ export default function App() {
               {(status === "idle" || status === "loading") && (
                 <form
                   onSubmit={handleVerify}
-                  className="border w-full md:w-60 rounded-lg md:rounded-xl p-3 md:p-0 md:grid md:justify-center bg-gray-200"
+                  className="border w-full md:w-65 md:-ml-2.5 0 rounded-lg md:rounded-xl p-3 md:p-0 md:grid md:justify-center bg-gray-200"
                 >
                   {/* MFG DATE */}
                   <div className="relative mb-2 md:mb-0" ref={dropdownRef}>
@@ -989,8 +989,8 @@ export default function App() {
 
               {/* SUCCESS */}
               {status === "success" && (
-                <div className="text-center min-h-[300px] py-4 md:py-6 px-3 md:px-2 border animate-in fade-in rounded-xl bg-gray-200 duration-500">
-                  <p className="text-[10px] font-['Times_New_Roman'] md:text-base text-justify text-gray-600 font-medium leading-snug">
+                <div className="text-center min-h-[300px] py-4 md:py-6 px-3 md:px-4 border animate-in fade-in rounded-xl bg-gray-200 duration-500">
+                  <p className="text-[10px] font-['Times_New_Roman'] md:text-base text-left text-gray-600 font-medium leading-snug">
                     Your <span className="text-emerald-600  font-bold">{productName}</span>  Has been successfully authenticated.
                   </p>
                 </div>
@@ -998,8 +998,8 @@ export default function App() {
 
               {/* DUPLICATE */}
               {status === "duplicate" && (
-                <div className="text-center min-h-[300px] py-4 md:py-6 px-3 md:px-2 border animate-in fade-in bg-gray-200 rounded-xl duration-500">
-                  <p className="text-[10px] md:text-sm font-medium font-['Times_New_Roman'] text-red-500 text-justify leading-snug">
+                <div className="text-center min-h-[300px] py-4  md:py-6 px-3 md:px-4 border animate-in fade-in bg-gray-200 rounded-xl duration-500">
+                  <p className="text-[10px] md:text-sm font-medium font-['Times_New_Roman'] text-red-500 text-left leading-snug">
                     Your product was Successfully Authenticated on {prevDetails?.fullDate}
                   </p>
                 </div>
@@ -1007,7 +1007,7 @@ export default function App() {
 
               {/* FAIL */}
               {status === "fail" && (
-                <div className="text-center py-4 min-h-[300px] md:py-6 px-3 md:px-2 animate-in fade-in rounded-xl bg-gray-200 duration-500">
+                <div className="text-center py-4 min-h-[300px] md:py-6 px-3 md:px-4 animate-in fade-in rounded-xl bg-gray-200 duration-500">
                   <h2 className="text-[11px] md:text-xl font-bold font-['Times_New_Roman'] text-red-500">
                     Invalid Credentials
                   </h2>
