@@ -876,7 +876,7 @@ export default function App() {
                     </div>
 
                     {isOpen && (
-                      <div className="absolute z-20 w-full md:w-60 md:ml-10 mt-1 bg-white border border-gray-300 rounded shadow-lg overflow-hidden">
+                      <div className="absolute z-20 w-full md:w-35 md:ml-10 mt-1 bg-white border border-gray-300 rounded shadow-lg overflow-hidden">
                         {options.map((opt) => (
                           <div
                             key={opt}
