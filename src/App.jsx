@@ -902,7 +902,7 @@ export default function App() {
                       <input
                         type="text"
                         required
-                        className="w-full md:w-40 md:ml-10 px-2 md:px-2 py-2 md:py-1 border border-gray-400 bg-white focus:border-gray-600 focus:outline-none text-[10px] md:text-[14px] text-gray-800 transition-colors rounded md:rounded-none"
+                        className="w-full md:w-45 md:ml-10 px-2 md:px-2 py-2 md:py-1 border border-gray-400 bg-white focus:border-gray-600 focus:outline-none text-[10px] md:text-[14px] text-gray-800 transition-colors rounded md:rounded-none"
                         value={serial}
                         onChange={(e) => setSerial(e.target.value)}
                       />
@@ -918,7 +918,7 @@ export default function App() {
                       type="text"
                       required
                       disabled={status === "loading"}
-                      className="w-full md:w-40 md:ml-10 px-2 md:px-2 py-2 md:py-1 border border-gray-400 bg-white focus:border-gray-600 focus:outline-none text-[10px] md:text-[14px] text-gray-800 transition-colors disabled:bg-gray-100 rounded md:rounded-none"
+                      className="w-full md:w-45 md:ml-10 px-2 md:px-2 py-2 md:py-1 border border-gray-400 bg-white focus:border-gray-600 focus:outline-none text-[10px] md:text-[14px] text-gray-800 transition-colors disabled:bg-gray-100 rounded md:rounded-none"
                       value={code}
                       onChange={(e) => setCode(e.target.value)}
                     />
@@ -940,13 +940,13 @@ export default function App() {
                   </div>
 
                   {/* NOTE */}
-                  <div className="text-[8px] md:text-[11px] px-0 md:px-4 text-gray-700 leading-tight mb-1.5">
+                  <div className="text-[8px] md:text-[11px] px-0 md:px-4 text-gray-700 leading-tight">
                     <p><strong>Note:</strong></p>
                     <p className="mt-0.5">Each product can only be authenticated once. All fields are case sensitive.</p>
                   </div>
 
                   {/* WARNING */}
-                  <div className="text-[8px] md:text-[11px] w-full md:w-60 px-0 md:px-4 text-gray-700 leading-tight mb-1.5">
+                  <div className="text-[8px] md:text-[11px] w-full md:w-63 px-0 md:px-4 text-gray-700 leading-tight">
                     <p><strong>Warning:</strong></p>
                     <p className="mt-0.5 text-justify">
                       We strongly discourage anyone from purchasing our products as loose ampoules/trays or blisters/strips without cartons. 
