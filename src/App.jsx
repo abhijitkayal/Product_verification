@@ -1007,21 +1007,28 @@ export default function App() {
 
               {/* FAIL */}
               {status === "fail" && (
-                <div className="text-center py-4 min-h-[300px] md:py-6 px-3 md:px-4 animate-in fade-in rounded-xl bg-gray-200 duration-500">
+                <div className="text-center py-4 min-h-[300px] border border-xl md:py-6 px-1 md:px-4 animate-in fade-in rounded-xl bg-gray-200 duration-500">
                   <h2 className="text-[11px] md:text-xl font-bold font-['Times_New_Roman'] text-red-500">
-                    Invalid Credentials
+                    WARNING!
                   </h2>
-
-                  <p className="text-gray-600 mt-2 md:mt-2 px-0 md:px-6 text-[9px] md:text-sm leading-snug">
-                    The details entered do not match any product in our database.
+                  <div className="space-y-4">
+                  <p className="text-gray-600 text-left font-semibold font-['Times_New_Roman'] text-red-500 mt-2 md:mt-2 px-0 md:px-1 text-[9px] md:text-[15px] leading-snug">
+                  Your Product could not be Authenticated!
                   </p>
+                  <p className="text-gray-600 text-left font-semibold font-['Times_New_Roman'] text-red-500 mt-2 md:mt-2 px-0 md:px-1 text-[9px] md:text-[15px] leading-snug">
+                  Do not Purchase this Product or return it to the Pharmacy!
+                  </p>
+                  <p className="text-gray-600 text-left font-semibold font-['Times_New_Roman'] text-red-500 mt-2 md:mt-2 px-0 md:px-1 text-[9px] md:text-[15px] leading-snug">
+                  Counterfeited medicines are potentially lethal!
+                  </p>
+                  </div>
 
-                  <button
+                  {/* <button
                     onClick={isQRMode ? resetQR : resetForm}
                     className="mt-4 md:mt-6 w-full py-2 md:py-3 bg-rose-600 text-white rounded-lg text-[10px] md:text-base font-bold hover:bg-rose-700 transition-all"
                   >
                     Try Again
-                  </button>
+                  </button> */}
                 </div>
               )}
             </div>
