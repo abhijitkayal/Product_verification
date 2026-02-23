@@ -991,7 +991,7 @@ export default function App() {
               {status === "success" && (
                 <div className="text-center min-h-[300px] py-4 md:py-6 px-3 md:px-4 border animate-in fade-in rounded-xl bg-gray-200 duration-500">
                   <p className="text-[10px] font-['Times_New_Roman'] md:text-base text-left text-gray-600 font-medium leading-snug">
-                    Your <span className="text-emerald-600  font-bold">{productName}</span>  Has been successfully authenticated.
+                    Your <span className="text-emerald-600  font-bold">{productName}</span>  has been successfully authenticated.
                   </p>
                 </div>
               )}
@@ -1000,7 +1000,7 @@ export default function App() {
               {status === "duplicate" && (
                 <div className="text-center min-h-[300px] py-4  md:py-6 px-3 md:px-4 border animate-in fade-in bg-gray-200 rounded-xl duration-500">
                   <p className="text-[10px] md:text-sm font-medium font-['Times_New_Roman'] text-red-500 text-left leading-snug">
-                    Your product was Successfully Authenticated on {prevDetails?.fullDate}
+                    Your product was Successfully Authenticated on {prevDetails?.fullDate} .
                   </p>
                 </div>
               )}
