@@ -1000,7 +1000,7 @@ export default function App() {
               {status === "duplicate" && (
                 <div className="text-center min-h-[300px] py-4  md:py-6 px-3 md:px-4 border animate-in fade-in bg-gray-200 rounded-xl duration-500">
                   <p className="text-[10px] md:text-sm font-medium font-['Times_New_Roman'] text-red-500 text-left leading-snug">
-                    Your product was Successfully Authenticated on {prevDetails?.fullDate} .
+                    Your product was Successfully Authenticated on {prevDetails?.fullDate}.
                   </p>
                 </div>
               )}
