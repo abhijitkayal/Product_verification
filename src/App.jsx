@@ -657,6 +657,8 @@ const [hasVerifiedFromQR, setHasVerifiedFromQR] = useState(false);
   };
 }, []);
 
+
+
   /* ============================================================
       🔥 ONE KEY FUNCTION (SAME FOR QR + MANUAL)
   ============================================================ */
@@ -672,39 +674,61 @@ const [hasVerifiedFromQR, setHasVerifiedFromQR] = useState(false);
     const cleanSerial = product.serial.trim().toUpperCase();
     return `auth_${cleanCode}_${cleanSerial}_${cleanMfg}`;
   };
+  function isLocalStorageAvailable() {
+  try {
+    const testKey = "__test_storage__";
+    localStorage.setItem(testKey, testKey);
+    localStorage.removeItem(testKey);
+    return true;
+  } catch (e) {
+    return false;
+  }
+}
 
   /* ============================================================
       🔥 ONE VERIFY FUNCTION (SAVES ONLY ONCE)
   ============================================================ */
-  const verifyProduct = (product) => {
-    setProductName(product.name);
+const verifyProduct = (product) => {
+  setProductName(product.name);
 
-    const key = makeAuthKey(product);
-    const cachedData = localStorage.getItem(key);
+  const key = makeAuthKey(product);
 
-    if (cachedData) {
-      setPrevDetails(JSON.parse(cachedData));
-      setStatus("duplicate");
-      return;
-    }
+  let cachedData = null;
 
-    const now = new Date();
-    const verificationInfo = {
-      fullDate:
-        now.toLocaleDateString("en-GB", {
-          day: "2-digit",
-          month: "long",
-          year: "numeric",
-          hour: "2-digit",
-          minute: "2-digit",
-          second: "2-digit",
-          hour12: true,
-        }) + " IST",
-    };
+  if (isLocalStorageAvailable()) {
+    cachedData = localStorage.getItem(key);
+  }
 
-    localStorage.setItem(key, JSON.stringify(verificationInfo));
-    setStatus("success");
+  if (cachedData) {
+    setPrevDetails(JSON.parse(cachedData));
+    setStatus("duplicate");
+    return;
+  }
+
+  const now = new Date();
+
+  const verificationInfo = {
+    fullDate:
+      now.toLocaleDateString("en-GB", {
+        day: "2-digit",
+        month: "long",
+        year: "numeric",
+        hour: "2-digit",
+        minute: "2-digit",
+        second: "2-digit",
+        hour12: true,
+      }) + " IST",
   };
+
+  if (isLocalStorageAvailable()) {
+    localStorage.setItem(key, JSON.stringify(verificationInfo));
+  }
+
+  setStatus("success");
+};
+  useEffect(() => {
+  window.scrollTo(0, 0);
+}, []);
 
   /* ===================== MANUAL VERIFY ===================== */
   const handleVerify = (e) => {
@@ -1037,7 +1061,7 @@ useEffect(() => {
             </div>
 
             {/* ================= OPTIONAL QR LIST FOR TEST ================= */}
-            {/* <div className="px-3 sm:px-6 pb-4 sm:pb-6">
+             {/* <div className="px-3 sm:px-6 pb-4 sm:pb-6">
               <details className="bg-gray-50 border rounded-xl p-3 sm:p-4">
                 <summary className="cursor-pointer font-bold text-xs sm:text-sm">
                   Show QR Codes For All Products (Testing)
@@ -1057,10 +1081,10 @@ useEffect(() => {
                         <QRCodeCanvas value={p.qrLink} size={120} className="w-28 h-28 sm:w-40 sm:h-40" />
                       </div>
 
-                      {/* <div className="text-[9px] sm:text-[10px] text-gray-500 break-all mt-2 text-center px-1">
+                      <div className="text-[9px] sm:text-[10px] text-gray-500 break-all mt-2 text-center px-1">
                         {p.qrLink}
-                      </div> */}
-                    {/* </div>
+                      </div> 
+                     </div>
                   ))}
                 </div>
               </details>
