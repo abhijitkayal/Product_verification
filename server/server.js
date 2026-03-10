@@ -48,6 +48,7 @@ if(product.verified){
 
 return res.json({
 status:"duplicate",
+productName:product.name,
 verifiedAt:product.verifiedAt
 });
 

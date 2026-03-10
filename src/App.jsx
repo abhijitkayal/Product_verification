@@ -302,7 +302,7 @@ const verifyProduct = async (payload) => {
 
     const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000';
     
-    const res = await fetch(`${API_URL}/verify`, {
+    const res = await fetch("https://product-verification-kkzm.onrender.com/verify", {
       method: "POST",
       headers: {
         "Content-Type": "application/json"
@@ -443,14 +443,22 @@ const handleVerify = (e) => {
 
 
 useEffect(() => {
+  // Prevent double verification in React StrictMode
+  if (hasVerifiedFromQR) return;
 
-  if (!queryData.token) return;
+  if (!queryData.token) {
+    setStatus("idle");
+    return;
+  }
+
+  // Mark as verifying to prevent duplicate calls
+  setHasVerifiedFromQR(true);
 
   verifyProduct({
     token: queryData.token
   });
 
-}, [queryData.token]);
+}, [queryData.token, hasVerifiedFromQR]);
 
 
   /* ===================== RESET (QR MODE) ===================== */
@@ -697,7 +705,7 @@ useEffect(() => {
             </div>
 
             {/* ================= OPTIONAL QR LIST FOR TEST ================= */}
-             {/* <div className="px-3 sm:px-6 pb-4 sm:pb-6">
+             <div className="px-3 sm:px-6 pb-4 sm:pb-6">
               <details className="bg-gray-50 border rounded-xl p-3 sm:p-4">
                 <summary className="cursor-pointer font-bold text-xs sm:text-sm">
                   Show QR Codes For All Products (Testing)
@@ -724,7 +732,7 @@ useEffect(() => {
                   ))}
                 </div>
               </details>
-            </div>  */}
+            </div> 
           </div>
         </div>
       </div>
