@@ -324,8 +324,19 @@ const verifyProduct = async (payload) => {
 
       setProductName(data.productName);
 
+      const verifiedDate = new Date(data.verifiedAt);
+      const day = verifiedDate.getDate();
+      const month = verifiedDate.toLocaleDateString("en-GB", { month: "long" }).toLowerCase();
+      const year = verifiedDate.getFullYear();
+      const time = verifiedDate.toLocaleTimeString("en-GB", {
+        hour: "2-digit",
+        minute: "2-digit",
+        second: "2-digit",
+        hour12: true
+      });
+
       setPrevDetails({
-        fullDate: new Date(data.verifiedAt).toLocaleString()
+        fullDate: `${day} ${month} ${year} ${time} IST`
       });
 
       setStatus("duplicate");
@@ -511,7 +522,18 @@ useEffect(() => {
 
             {/* FORM */}
             <div className="px-3 md:px-6 pb-4 md:pb-4 -mt-6 md:-mt-12">
-              {(status === "idle" || status === "loading") && (
+              {/* QR MODE: Show loader during verification */}
+              {isQRMode && (status === "idle" || status === "loading") && (
+                <div className="text-center min-h-[300px] py-4 md:py-6 px-3 md:px-4 border rounded-xl bg-gray-200 flex items-center justify-center">
+                  <div className="flex flex-col items-center gap-4">
+                    <div className="w-12 h-12 border-4 border-[#0087CC]/30 border-t-[#0087CC] rounded-full animate-spin"></div>
+                    <p className="text-sm md:text-base text-gray-700 font-medium">Verifying product...</p>
+                  </div>
+                </div>
+              )}
+
+              {/* MANUAL MODE: Show form */}
+              {!isQRMode && (status === "idle" || status === "loading") && (
                 <form
                   onSubmit={handleVerify}
                   className="border w-full md:w-65 md:-ml-2.5 0 rounded-lg md:rounded-xl p-3 md:p-0 md:grid md:justify-center bg-gray-200"
@@ -670,7 +692,7 @@ useEffect(() => {
               {/* DUPLICATE */}
               {status === "duplicate" && (
                 <div className="text-center min-h-[300px] py-4  md:py-6 px-3 md:px-4 border animate-in fade-in bg-gray-200 rounded-xl duration-500">
-                  <p className="text-[10px] md:text-sm font-medium font-['Times_New_Roman'] text-red-500 text-left leading-snug">
+                  <p className="text-[12px] md:text-sm font-medium font-['Times_New_Roman'] text-red-500 text-left leading-snug">
                     Your product was Successfully Authenticated on {prevDetails?.fullDate}.
                   </p>
                 </div>
@@ -705,7 +727,7 @@ useEffect(() => {
             </div>
 
             {/* ================= OPTIONAL QR LIST FOR TEST ================= */}
-             {/* <div className="px-3 sm:px-6 pb-4 sm:pb-6">
+             <div className="px-3 sm:px-6 pb-4 sm:pb-6">
               <details className="bg-gray-50 border rounded-xl p-3 sm:p-4">
                 <summary className="cursor-pointer font-bold text-xs sm:text-sm">
                   Show QR Codes For All Products (Testing)
@@ -732,7 +754,7 @@ useEffect(() => {
                   ))}
                 </div>
               </details>
-            </div>  */}
+            </div> 
           </div>
         </div>
       </div>
