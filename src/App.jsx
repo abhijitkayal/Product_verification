@@ -727,7 +727,7 @@ useEffect(() => {
             </div>
 
             {/* ================= OPTIONAL QR LIST FOR TEST ================= */}
-             <div className="px-3 sm:px-6 pb-4 sm:pb-6">
+             {/* <div className="px-3 sm:px-6 pb-4 sm:pb-6">
               <details className="bg-gray-50 border rounded-xl p-3 sm:p-4">
                 <summary className="cursor-pointer font-bold text-xs sm:text-sm">
                   Show QR Codes For All Products (Testing)
@@ -754,7 +754,7 @@ useEffect(() => {
                   ))}
                 </div>
               </details>
-            </div> 
+            </div>  */}
           </div>
         </div>
       </div>
